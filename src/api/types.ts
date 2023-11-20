@@ -44,7 +44,8 @@ type Kanji = {
   koreanH: string[];
   parts: string[];
   radical: string;
-  strokeFrames: string;
+  variant?: string[];
+  strokeFrames?: string;
 };
 
 type Word = {
@@ -54,25 +55,30 @@ type Word = {
     furigana: string;
   };
   common: boolean;
-  senses: [
-    {
-      glosses: string[];
-      pos: string[];
-      language: Language;
-    }
-  ];
+  senses: {
+    glosses: string[];
+    pos: { [key: string]: string }[];
+    language: Language;
+  }[];
   audio?: string;
-  pitch: [
-    {
-      part: string;
-      high: boolean;
-    }
-  ];
+  pitch?: {
+    part: string;
+    high: boolean;
+  }[];
 };
 
 type WordResponse = {
   kanji: Kanji[];
   words: Word[];
+};
+
+type KanjiResponse = {
+  kanji: Kanji[];
+};
+
+type KanjiByRadicalResponse = {
+  kanji: { [key: string]: string[] };
+  possible_radicals: { [key: string]: string[] };
 };
 
 type NameType =
@@ -93,7 +99,11 @@ type JapaneseName = {
   kana: string;
   kanji: string;
   transcription: string;
-  nameType: NameType;
+  nameType: NameType[];
+};
+
+type NameResponse = {
+  names: JapaneseName[];
 };
 
 type Sentence = {
@@ -101,6 +111,11 @@ type Sentence = {
   furigana: string;
   translation: string;
   language: string;
+  eng: string;
+};
+
+type SentenceResponse = {
+  sentences: Sentence[];
 };
 
 type Suggestion = {
@@ -108,7 +123,7 @@ type Suggestion = {
   secondary?: string;
 };
 
-type CompletionResult = {
+type CompletionResponse = {
   suggestions: Suggestion[];
   suggestionType: "default";
 };

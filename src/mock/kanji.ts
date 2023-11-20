@@ -1,0 +1,35 @@
+const kanji: Kanji[] = [
+  {
+    literal: "東",
+    meanings: ["east"],
+    grade: 2,
+    strokeCount: 8,
+    frequency: 37,
+    jlpt: 5,
+    onyomi: ["トウ"],
+    kunyomi: ["ひがし"],
+    chinese: ["dong1"],
+    koreanR: ["dong"],
+    koreanH: ["동"],
+    parts: ["｜", "一", "日", "木", "田"],
+    radical: "木",
+  },
+  {
+    literal: "京",
+    meanings: ["capital", "10**16"],
+    grade: 2,
+    strokeCount: 8,
+    frequency: 74,
+    jlpt: 4,
+    variant: ["1-48-23"],
+    onyomi: ["キョウ", "ケイ", "キン"],
+    kunyomi: ["みやこ"],
+    chinese: ["jing1"],
+    koreanR: ["gyeong"],
+    koreanH: ["경"],
+    parts: ["口", "小", "亠"],
+    radical: "亠",
+  },
+];
+
+export default kanji;
