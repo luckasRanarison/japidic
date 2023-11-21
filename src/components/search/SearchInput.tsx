@@ -43,7 +43,7 @@ const SearchInput = () => {
       <button
         className="px-4 rounded-r-md 
         text-white bg-secondary hover:bg-primary
-        dark:hover:text-secondary dark:hover:bg-light"
+        dark:hover:text-primary-dark dark:hover:bg-transparent"
         onClick={handleSearch}
       >
         <RiSearchLine className="stroke-1" />

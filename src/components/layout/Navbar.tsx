@@ -2,16 +2,33 @@
 
 import Image from "next/image";
 import Icon from "@/assets/fuji.png";
-import { RiGithubFill, RiSunFill } from "react-icons/ri";
+import { RiGithubFill, RiMoonFill, RiSunFill } from "react-icons/ri";
 import useScroll from "@/hooks/UseScroll";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { scrollY } = useScroll();
+  const [theme, setTheme] = useState("light");
 
-  // FIXME: persistent dark mode
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    const currentTheme = isDarkMode ? "dark" : "light";
+    sessionStorage.setItem("theme", currentTheme);
+    setTheme(currentTheme);
   };
+
+  useEffect(() => {
+    const theme = sessionStorage.getItem("theme");
+
+    if (theme == "dark") {
+      document.documentElement.classList.add("dark");
+      setTheme("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      setTheme("light");
+    }
+  }, []);
 
   return (
     <nav
@@ -30,14 +47,21 @@ const Navbar = () => {
         </span>
       </div>
       <div className="flex space-x-6">
-        <button onClick={toggleTheme}>
-          <RiSunFill
-            size={24}
-            className="hover:rotate-180 hover:text-primary duration-500"
-          />
+        <button
+          onClick={toggleTheme}
+          className="hover:rotate-180 hover:text-primary dark:hover:text-primary-dark duration-500"
+        >
+          {theme == "light" ? (
+            <RiSunFill size={24} />
+          ) : (
+            <RiMoonFill size={24} />
+          )}
         </button>
         <a href="https://github.com/luckasRanarison/japidic">
-          <RiGithubFill size={24} className="hover:text-primary duration-300" />
+          <RiGithubFill
+            size={24}
+            className="hover:text-primary dark:hover:text-primary-dark duration-300"
+          />
         </a>
       </div>
     </nav>

@@ -42,7 +42,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
                 key={index}
                 className="py-3 px-5 flex font-sembibold
                 hover:text-light hover:bg-secondary
-                dark:hover:text-secondary dark:hover:bg-light"
+                dark:hover:text-secondary dark:hover:bg-primary-dark"
                 onClick={() => onSelect(index)}
               >
                 <span className="mr-4">{symbol}</span>

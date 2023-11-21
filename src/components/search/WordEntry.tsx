@@ -1,7 +1,5 @@
 import { extractPos, pascalToSpaced } from "@/utils/word";
 import {
-  RiArrowDownLine,
-  RiArrowUpLine,
   RiClipboardFill,
   RiLinkM,
   RiShareFill,
@@ -19,19 +17,27 @@ type PitchProps = {
 
 const PitchAccent = ({ data }: PitchProps) => (
   <div className="flex">
-    {data.map((value) =>
-      value.high ? (
-        <div className="flex items-center">
-          <RiArrowUpLine />
+    {data.map((value, index) => {
+      const prev = data[index - 1];
+      return value.high ? (
+        <div
+          className={`p-1 flex items-center 
+          ${
+            prev && !prev.high && "border-l-2"
+          } border-t-2 border-primary dark:border-primary-dark`}
+        >
           <div>{value.part}</div>
         </div>
       ) : (
-        <div className="flex items-center">
-          <RiArrowDownLine />
+        <div
+          className={`p-1 flex items-center ${value.part && "border-b-2"} ${
+            prev?.high && "border-l-2"
+          } border-primary dark:border-primary-dark`}
+        >
           <div>{value.part}</div>
         </div>
-      )
-    )}
+      );
+    })}
   </div>
 );
 
@@ -47,7 +53,10 @@ const WordEntry = ({ data }: EntryProps) => {
     >
       <div className="space-y-6 sm:space-y-0 flex flex-col sm:flex-row justify-between">
         <div className="space-y-4">
-          <div className="flex items-end space-x-4 text-secondary dark:text-light">
+          <div
+            className="flex flex-col md:flex-row items-start md:items-end space-y-2 md:space-x-4
+          text-secondary dark:text-light"
+          >
             {data.reading.furigana ? (
               <Furigana data={data.reading.furigana} />
             ) : (
@@ -58,20 +67,23 @@ const WordEntry = ({ data }: EntryProps) => {
             {data.pitch && <PitchAccent data={data.pitch} />}
           </div>
           {data.common && (
-            <div className="w-fit py-1 px-3 rounded-md text-sm text-light bg-primary">
+            <div
+              className="w-fit py-1 px-3 rounded-md text-sm 
+              text-light bg-primary dark:text-dark dark:bg-primary-dark"
+            >
               Common
             </div>
           )}
         </div>
         <div className="space-x-6 text-secondary dark:text-white">
           <button>
-            <RiShareFill className="hover:text-primary" />
+            <RiShareFill className="hover:text-primary dark:hover:text-primary-dark" />
           </button>
           <button>
-            <RiClipboardFill className="hover:text-primary" />
+            <RiClipboardFill className="hover:text-primary dark:hover:text-primary-dark" />
           </button>
           <button>
-            <RiSpeakFill className="hover:text-primary" />
+            <RiSpeakFill className="hover:text-primary dark:hover:text-primary-dark" />
           </button>
         </div>
       </div>
@@ -93,12 +105,12 @@ const WordEntry = ({ data }: EntryProps) => {
             <div className="flex items-center space-x-1">
               <RiLinkM className="text-secondary" />
               <span>See also </span>
-              <StyledLink href={`/search?type=0&query=${sense.xref}`}>
+              <StyledLink href={`/search?type=0&query=${sense.xref}`} internal>
                 {sense.xref}
               </StyledLink>
             </div>
           )}
-          <div className="text-secondary opacity-70 text-sm">
+          <div className="text-secondary dark:text-light opacity-70 text-sm">
             {[sense.field && sense.field + "Term", sense.misc]
               .map((value) => value && pascalToSpaced(value))
               .filter((value) => value)
