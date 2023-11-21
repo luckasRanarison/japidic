@@ -48,17 +48,31 @@ type Kanji = {
   strokeFrames?: string;
 };
 
+type Reading = {
+  kana: string;
+  kanji?: string;
+  furigana: string | null;
+};
+
+type PartOfSpeech =
+  | string
+  | { [key: string]: string }
+  | { [key: string]: { [key: string]: string } };
+
 type Word = {
-  reading: {
-    kana: string;
-    kanji: string;
-    furigana: string;
-  };
+  reading: Reading;
+  altReadings?: Reading[];
   common: boolean;
   senses: {
     glosses: string[];
-    pos: { [key: string]: string }[];
     language: Language;
+    pos?: PartOfSpeech[];
+    dialect?: string;
+    field?: string;
+    information?: string;
+    antonym?: string;
+    misc?: string;
+    xref?: string;
   }[];
   audio?: string;
   pitch?: {

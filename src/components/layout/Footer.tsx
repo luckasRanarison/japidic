@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
 import { RiEyeLine, RiGitBranchLine, RiStarLine } from "react-icons/ri";
-import StyledLink from "./StyledLink";
+import StyledLink from "../common/StyledLink";
 
 type StatProp = {
   icon: IconType;

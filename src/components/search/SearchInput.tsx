@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SearchSelect from "./SearchSelect";
 import { SearchOption } from "@/utils/search";
 
 const SearchInput = () => {
-  const [input, setInput] = useState("");
+  const { push } = useRouter();
+  const searchParams = useSearchParams();
+  const [input, setInput] = useState(searchParams.get("query") || "");
   const [option, setOption] = useState(SearchOption.Word);
-  const router = useRouter();
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(() => event.target.value);
@@ -21,13 +22,14 @@ const SearchInput = () => {
 
   const handleSearch = () => {
     if (input) {
-      router.push(`/search?type=${option},query=${input}`);
+      push(`/search?type=${option}&query=${input}`);
     }
   };
 
   return (
     <div
-      className="flex rounded-md shadow-md duration-300
+      className="w-full max-w-full md:max-w-md 
+      flex rounded-md shadow-md duration-300
       bg-white text-secondary dark:text-light dark:bg-secondary"
     >
       <SearchSelect value={option} onSelect={handleSelect} />
@@ -40,7 +42,8 @@ const SearchInput = () => {
       />
       <button
         className="px-4 rounded-r-md 
-        text-white bg-secondary dark:hover:text-secondary dark:hover:bg-light hover:bg-primary"
+        text-white bg-secondary hover:bg-primary
+        dark:hover:text-secondary dark:hover:bg-light"
         onClick={handleSearch}
       >
         <RiSearchLine className="stroke-1" />

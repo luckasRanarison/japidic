@@ -1,8 +1,8 @@
-import SearchInput from "@/components/SearchInput";
+import SearchInput from "@/components/search/SearchInput";
 
-const Home = () => {
+const Page = () => {
   return (
-    <main
+    <div
       className="h-full p-4 space-y-8
       flex flex-col items-center justify-center 
       text-center text-secondary"
@@ -12,8 +12,8 @@ const Home = () => {
         <div className="text-xl opacity-60">Free Japanese dictionary</div>
       </div>
       <SearchInput />
-    </main>
+    </div>
   );
 };
 
-export default Home;
+export default Page;

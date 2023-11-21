@@ -1,3 +1,5 @@
+import { searchKanji, searchName, searchSentence, searchWord } from "@/api";
+
 enum SearchOption {
   Word,
   Kanji,

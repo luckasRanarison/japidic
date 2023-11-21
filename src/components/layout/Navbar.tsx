@@ -15,10 +15,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`z-50 top-0 sticky py-5 px-8 duration-300
+      className={`z-20 top-0 sticky py-5 px-8 duration-300
       flex items-center justify-between
       text-secondary bg-light dark:text-light dark:bg-dark ${
-        scrollY > 40 && "shadow-md"
+        scrollY > 20 && "shadow-md"
       }`}
     >
       <div className="flex items-center space-x-3">
