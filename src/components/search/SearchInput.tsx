@@ -4,19 +4,19 @@ import { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import { useRouter, useSearchParams } from "next/navigation";
 import SearchSelect from "./SearchSelect";
-import { SearchOption } from "@/utils/search";
+import { SearchType } from "@/utils/search";
 
 const SearchInput = () => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const [input, setInput] = useState(searchParams.get("query") || "");
-  const [option, setOption] = useState(SearchOption.Word);
+  const [option, setOption] = useState(SearchType.Word);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(() => event.target.value);
   };
 
-  const handleSelect = (value: SearchOption) => {
+  const handleSelect = (value: SearchType) => {
     setOption(value);
   };
 

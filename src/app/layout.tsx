@@ -14,22 +14,18 @@ export const metadata: Metadata = {
   description: "Japanese dictionary",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body
-        className={`${notoSansJp.className} 
-        flex flex-col h-1 min-h-screen
-        bg-light dark:bg-dark duration-300`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  );
-}
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <html lang="en">
+    <body
+      className={`${notoSansJp.className}
+      flex flex-col h-1 min-h-screen
+      bg-light dark:bg-dark duration-300`}
+    >
+      <Navbar />
+      {children}
+      <Footer />
+    </body>
+  </html>
+);
+
+export default RootLayout;
