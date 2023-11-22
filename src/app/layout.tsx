@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${notoSansJp.className} 
-        flex flex-col h-1 min-h-screen 
+        flex flex-col h-1 min-h-screen
         bg-light dark:bg-dark duration-300`}
       >
         <Navbar />
