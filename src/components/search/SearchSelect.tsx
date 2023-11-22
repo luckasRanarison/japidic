@@ -19,7 +19,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
   return (
     <div
       onClick={toggleList}
-      className="relative px-6 flex items-center space-x-4 
+      className="relative pl-6 flex items-center space-x-4 
       group hover:cursor-pointer"
     >
       <span>{optionMap[value].symbol}</span>

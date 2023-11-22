@@ -15,12 +15,13 @@ const StyledButton = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`${className} p-2 rounded-full
+      className={`${className} 
+      relative group p-2 rounded-full
       text-secondary dark:text-dark dark:bg-light
       hover:text-primary dark:hover:bg-primary-dark`}
       onClick={onClick}
     >
-      <Icon size={size ? size : 20} />
+      <Icon size={size ? size : 18} />
     </button>
   );
 };

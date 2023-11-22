@@ -1,47 +1,9 @@
 import { extractPos, pascalToSpaced } from "@/utils/word";
-import {
-  RiArrowRightDoubleFill,
-  RiFileCopyLine,
-  RiLinkM,
-  RiShareLine,
-  RiVolumeUpLine,
-} from "react-icons/ri";
-import StyledLink from "../common/StyledLink";
-import Furigana from "../common/Furigana";
-import StyledButton from "../common/StyledButton";
-
-type PitchProps = {
-  data: {
-    part: string;
-    high: boolean;
-  }[];
-};
-
-const PitchAccent = ({ data }: PitchProps) => (
-  <div className="flex">
-    {data.map((value, index) => {
-      const prev = data[index - 1];
-      return value.high ? (
-        <div
-          className={`p-1 flex items-center 
-          ${
-            prev && !prev.high && "border-l-2"
-          } border-t-2 border-primary dark:border-primary-dark`}
-        >
-          <div>{value.part}</div>
-        </div>
-      ) : (
-        <div
-          className={`p-1 flex items-center ${value.part && "border-b-2"} ${
-            prev?.high && "border-l-2"
-          } border-primary dark:border-primary-dark`}
-        >
-          <div>{value.part}</div>
-        </div>
-      );
-    })}
-  </div>
-);
+import { RiArrowRightDoubleFill, RiLinkM } from "react-icons/ri";
+import StyledLink from "../../common/StyledLink";
+import Furigana from "../../common/Furigana";
+import PitchAccent from "./PichAccent";
+import ButtonWrapper from "./ButtonWrapper";
 
 type EntryProps = {
   data: Word;
@@ -49,14 +11,18 @@ type EntryProps = {
 
 const WordEntry = ({ data }: EntryProps) => (
   <div
-    className="px-8 py-6 space-y-4 rounded-md 
-      text-dark dark:text-light dark:bg-secondary bg-white shadow-md"
+    className="px-8 py-6 space-y-4 rounded-md shadow-md
+    text-dark dark:text-light dark:bg-secondary bg-white"
   >
-    <div className="space-y-6 sm:space-y-0 flex flex-col sm:flex-row justify-between">
+    <div
+      className="space-y-6 flex flex-col justify-between
+      sm:space-y-0 sm:flex-row"
+    >
       <div className="space-y-4">
         <div
-          className="flex flex-col md:flex-row items-start md:items-end space-y-2 md:space-x-4
-            text-secondary dark:text-light"
+          className="space-y-2 flex flex-col items-start
+          md:space-x-4 md:flex-row md:items-end
+          text-secondary dark:text-light"
         >
           {data.reading.furigana ? (
             <Furigana data={data.reading.furigana} />
@@ -76,11 +42,10 @@ const WordEntry = ({ data }: EntryProps) => (
           </div>
         )}
       </div>
-      <div className="space-x-4">
-        <StyledButton icon={RiVolumeUpLine} />
-        <StyledButton icon={RiFileCopyLine} />
-        <StyledButton icon={RiShareLine} />
-      </div>
+      <ButtonWrapper
+        audio={data.audio}
+        writting={data.reading.kanji ? data.reading.kanji : data.reading.kana}
+      />
     </div>
     <div className="">
       {data.senses.map((sense, index) => (

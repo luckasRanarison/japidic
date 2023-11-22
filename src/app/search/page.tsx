@@ -1,5 +1,5 @@
 import SearchInput from "@/components/search/SearchInput";
-import WordContainer from "@/components/search/WordContainer";
+import WordList from "@/components/search/word/WordList";
 import { Suspense } from "react";
 
 type PageProps = {
@@ -14,7 +14,7 @@ const Page = async ({ searchParams }: PageProps) => {
     <div className="p-6 space-y-16 flex flex-col items-center">
       <SearchInput />
       <Suspense fallback={<div>Loading...</div>}>
-        <WordContainer query={searchParams.query} />
+        <WordList query={searchParams.query} />
       </Suspense>
     </div>
   );

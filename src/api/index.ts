@@ -37,3 +37,5 @@ export {
   searchSentence,
   getCompletion,
 };
+
+export default api;

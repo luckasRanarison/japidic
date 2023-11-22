@@ -10,9 +10,9 @@ const WordContainer = async ({ query }: ContainerProps) => {
   // const results = await searchWord({ query });
 
   return (
-    <div className="w-full max-w-6xl space-y-8">
-      {wordMocks.map((word) => (
-        <WordEntry data={word} />
+    <div className="w-full max-w-4xl space-y-8">
+      {wordMocks.map((word, key) => (
+        <WordEntry key={key} data={word} />
       ))}
     </div>
   );
