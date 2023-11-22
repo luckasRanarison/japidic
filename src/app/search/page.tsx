@@ -1,5 +1,5 @@
 import SearchInput from "@/components/search/SearchInput";
-import WordList from "@/components/search/word/WordList";
+import { SearchType, tagMap } from "@/utils/search";
 import { Suspense } from "react";
 
 type PageProps = {
@@ -10,11 +10,14 @@ type PageProps = {
 };
 
 const Page = async ({ searchParams }: PageProps) => {
+  const type: SearchType = parseInt(searchParams.type);
+  const ListTag = tagMap[type];
+
   return (
     <div className="p-6 space-y-16 flex flex-col items-center">
       <SearchInput />
       <Suspense fallback={<div>Loading...</div>}>
-        <WordList query={searchParams.query} />
+        <ListTag query={searchParams.query} />
       </Suspense>
     </div>
   );

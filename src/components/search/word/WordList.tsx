@@ -6,7 +6,7 @@ type ContainerProps = {
   query: string;
 };
 
-const WordContainer = async ({ query }: ContainerProps) => {
+const WordList = async ({ query }: ContainerProps) => {
   // const results = await searchWord({ query });
 
   return (
@@ -18,4 +18,4 @@ const WordContainer = async ({ query }: ContainerProps) => {
   );
 };
 
-export default WordContainer;
+export default WordList;

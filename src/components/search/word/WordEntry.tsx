@@ -4,16 +4,14 @@ import StyledLink from "../../common/StyledLink";
 import Furigana from "../../common/Furigana";
 import PitchAccent from "./PichAccent";
 import ButtonWrapper from "./ButtonWrapper";
+import EntryContainer from "../EntryContainer";
 
 type EntryProps = {
   data: Word;
 };
 
 const WordEntry = ({ data }: EntryProps) => (
-  <div
-    className="px-8 py-6 space-y-4 rounded-md shadow-md
-    text-dark dark:text-light dark:bg-secondary bg-white"
-  >
+  <EntryContainer>
     <div
       className="space-y-6 flex flex-col justify-between
       sm:space-y-0 sm:flex-row"
@@ -21,8 +19,7 @@ const WordEntry = ({ data }: EntryProps) => (
       <div className="space-y-4">
         <div
           className="space-y-2 flex flex-col items-start
-          md:space-x-4 md:flex-row md:items-end
-          text-secondary dark:text-light"
+          md:space-x-4 md:flex-row md:items-end"
         >
           {data.reading.furigana ? (
             <Furigana data={data.reading.furigana} />
@@ -36,7 +33,7 @@ const WordEntry = ({ data }: EntryProps) => (
         {data.common && (
           <div
             className="w-fit py-1 px-3 rounded-md text-sm 
-              text-light bg-primary dark:text-dark dark:bg-primary-dark"
+            text-light bg-primary dark:text-dark dark:bg-primary-dark"
           >
             Common
           </div>
@@ -51,16 +48,16 @@ const WordEntry = ({ data }: EntryProps) => (
       {data.senses.map((sense, index) => (
         <div key={index} className="space-y-2">
           {sense.pos && (
-            <div className="font-semibold text-secondary dark:text-white">
+            <div className="font-semibold">
               {JSON.stringify(data.senses[index - 1]?.pos) !=
                 JSON.stringify(sense.pos) && extractPos(sense.pos)}
             </div>
           )}
           <div>
-            <span className="mr-4 font-semibold text-sm text-secondary dark:text-white">
-              {index + 1}.
+            <span className="mr-4 font-semibold text-sm">{index + 1}.</span>
+            <span className="text-dark dark:text-light">
+              {sense.glosses.join(", ")}
             </span>
-            <span>{sense.glosses.join(", ")}</span>
           </div>
           {sense.xref && (
             <div className="flex items-center space-x-1">
@@ -71,7 +68,7 @@ const WordEntry = ({ data }: EntryProps) => (
               </StyledLink>
             </div>
           )}
-          <div className="text-secondary dark:text-light opacity-70 text-sm">
+          <div className="opacity-70 text-sm">
             {[sense.field && sense.field + "Term", sense.misc]
               .map((value) => value && pascalToSpaced(value))
               .filter((value) => value)
@@ -90,6 +87,6 @@ const WordEntry = ({ data }: EntryProps) => (
         More details
       </StyledLink>
     </div>
-  </div>
+  </EntryContainer>
 );
 export default WordEntry;
