@@ -3,7 +3,7 @@ import { RiArrowRightDoubleFill, RiLinkM } from "react-icons/ri";
 import StyledLink from "../../common/StyledLink";
 import Furigana from "../../common/Furigana";
 import PitchAccent from "./PichAccent";
-import ButtonWrapper from "./ButtonWrapper";
+import ButtonWrapper from "../ButtonWrapper";
 import EntryContainer from "../EntryContainer";
 
 type EntryProps = {
