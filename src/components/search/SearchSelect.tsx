@@ -1,12 +1,12 @@
 "use client";
 
-import { SearchOption, optionMap } from "@/utils/search";
+import { SearchType, optionMap } from "@/utils/search";
 import { useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 type SelectProps = {
-  value: SearchOption;
-  onSelect: (value: SearchOption) => void;
+  value: SearchType;
+  onSelect: (value: SearchType) => void;
 };
 
 const SearchSelect = ({ value, onSelect }: SelectProps) => {
@@ -33,7 +33,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
           isListVisible ? "visible opacity-100" : "invisible opacity-0"
         } absolute top-16 -left-4
           overflow-clip rounded-md shadow-md 
-          bg-white dark:bg-secondary duration-300`}
+          bg-white dark:bg-darkoverlay duration-300`}
       >
         {Object.values(optionMap).map(
           ({ symbol, name }, index) =>
@@ -41,8 +41,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
               <div
                 key={index}
                 className="py-3 px-5 flex font-sembibold
-                hover:text-light hover:bg-secondary
-                dark:hover:text-secondary dark:hover:bg-primary-dark"
+                hover:text-light hover:bg-secondary"
                 onClick={() => onSelect(index)}
               >
                 <span className="mr-4">{symbol}</span>

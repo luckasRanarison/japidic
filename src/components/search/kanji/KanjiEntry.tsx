@@ -35,7 +35,7 @@ const KanjiEntry = ({ data }: EntryProps) => (
       {data.parts.map((value) => (
         <Link
           href={`/search?type=1&query=${value}`}
-          className="text-xl text-primary dark:text-primary-dark"
+          className="text-xl text-primary"
         >
           {value}
         </Link>

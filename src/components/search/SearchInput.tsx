@@ -30,7 +30,7 @@ const SearchInput = () => {
     <div
       className="w-full max-w-full md:max-w-md 
       flex rounded-md shadow-md duration-300
-      bg-white text-secondary dark:text-light dark:bg-secondary"
+      bg-white text-secondary dark:text-light dark:bg-darkoverlay"
     >
       <SearchSelect value={option} onSelect={handleSelect} />
       <input
@@ -42,8 +42,7 @@ const SearchInput = () => {
       />
       <button
         className="px-4 rounded-r-md 
-        text-white bg-secondary hover:bg-primary
-        dark:hover:text-primary-dark dark:hover:bg-transparent"
+        text-white bg-secondary hover:bg-primary"
         onClick={handleSearch}
       >
         <RiSearchLine className="stroke-1" />

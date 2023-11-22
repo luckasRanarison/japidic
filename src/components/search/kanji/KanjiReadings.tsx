@@ -9,7 +9,7 @@ const KanjiReadings = ({ onyomi, kunyomi }: ReadingProps) => (
       <span
         key={key}
         className="py-1 px-3 rounded-md
-        text-light bg-primary dark:text-dark dark:bg-primary-dark"
+        text-light bg-primary"
       >
         {reading}
       </span>
@@ -18,7 +18,7 @@ const KanjiReadings = ({ onyomi, kunyomi }: ReadingProps) => (
       <span
         key={key}
         className="py-1 px-3 rounded-md
-        text-light bg-secondary dark:text-light dark:bg-dark"
+        text-light bg-secondary"
       >
         {reading}
       </span>

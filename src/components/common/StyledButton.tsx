@@ -17,8 +17,7 @@ const StyledButton = ({
     <button
       className={`${className} 
       relative group p-2 rounded-full
-      text-secondary dark:text-dark dark:bg-light
-      hover:text-primary dark:hover:bg-primary-dark`}
+      text-secondary dark:text-light hover:text-primary`}
       onClick={onClick}
     >
       <Icon size={size ? size : 18} />

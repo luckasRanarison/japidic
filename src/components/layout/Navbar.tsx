@@ -34,7 +34,7 @@ const Navbar = () => {
     <nav
       className={`z-20 top-0 sticky py-5 px-8 duration-300
       flex items-center justify-between
-      text-secondary bg-light dark:text-light dark:bg-dark ${
+      text-secondary bg-light dark:text-light dark:bg-darkbg ${
         scrollY > 20 && "shadow-md"
       }`}
     >
@@ -49,7 +49,7 @@ const Navbar = () => {
       <div className="flex space-x-6">
         <button
           onClick={toggleTheme}
-          className="hover:rotate-180 hover:text-primary dark:hover:text-primary-dark duration-500"
+          className="hover:rotate-180 hover:text-primary duration-500"
         >
           {theme == "light" ? (
             <RiSunFill size={24} />
@@ -58,10 +58,7 @@ const Navbar = () => {
           )}
         </button>
         <a href="https://github.com/luckasRanarison/japidic">
-          <RiGithubFill
-            size={24}
-            className="hover:text-primary dark:hover:text-primary-dark duration-300"
-          />
+          <RiGithubFill size={24} className="hover:text-primary duration-300" />
         </a>
       </div>
     </nav>

@@ -33,7 +33,7 @@ const WordEntry = ({ data }: EntryProps) => (
         {data.common && (
           <div
             className="w-fit py-1 px-3 rounded-md text-sm 
-            text-light bg-primary dark:text-dark dark:bg-primary-dark"
+            text-light bg-primary"
           >
             Common
           </div>
@@ -61,7 +61,7 @@ const WordEntry = ({ data }: EntryProps) => (
           </div>
           {sense.xref && (
             <div className="flex items-center space-x-1">
-              <RiLinkM className="text-secondary dark:text-primary-dark" />
+              <RiLinkM className="text-secondary" />
               <span>See also </span>
               <StyledLink href={`/search?type=0&query=${sense.xref}`} internal>
                 {sense.xref}
@@ -78,7 +78,7 @@ const WordEntry = ({ data }: EntryProps) => (
       ))}
     </div>
     <div className="flex items-center space-x-2">
-      <RiArrowRightDoubleFill className="text-primary dark:text-primary-dark" />
+      <RiArrowRightDoubleFill className="text-primary" />
       <StyledLink
         href={`/defifinition/${
           data.reading.kanji ? data.reading.kanji : data.reading.kana

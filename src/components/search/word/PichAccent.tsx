@@ -12,9 +12,7 @@ const PitchAccent = ({ data }: PitchProps) => (
       return value.high ? (
         <div
           className={`p-1 flex items-center 
-          ${
-            prev && !prev.high && "border-l-2"
-          } border-t-2 border-primary dark:border-primary-dark`}
+          ${prev && !prev.high && "border-l-2"} border-t-2 border-primary`}
         >
           <div>{value.part}</div>
         </div>
@@ -22,7 +20,7 @@ const PitchAccent = ({ data }: PitchProps) => (
         <div
           className={`p-1 flex items-center ${value.part && "border-b-2"} ${
             prev?.high && "border-l-2"
-          } border-primary dark:border-primary-dark`}
+          } border-primary`}
         >
           <div>{value.part}</div>
         </div>

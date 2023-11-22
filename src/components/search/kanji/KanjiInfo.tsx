@@ -11,7 +11,7 @@ const KanjiInfo = ({ icon: Icon, info, value }: InfoProps) => {
     <div className="flex font-semibold items-center space-x-2">
       <Icon />
       <span>{info}: </span>
-      <span className="text-primary dark:text-primary-dark">{value}</span>
+      <span className="text-primary">{value}</span>
     </div>
   );
 };
