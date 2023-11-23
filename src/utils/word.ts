@@ -1,5 +1,15 @@
+function formatPos(pos: string) {
+  const posMap = new Map([
+    ["Keiyoushi", "I"],
+    ["Expr", "Expression"],
+    ["SoundFx", "Sound effect"],
+  ]);
+  return posMap.get(pos) || pos;
+}
+
 function pascalToSpaced(...s: string[]) {
   const concat = s
+    .map(formatPos)
     .map((value) => value.charAt(0).toUpperCase() + value.slice(1))
     .join("");
 

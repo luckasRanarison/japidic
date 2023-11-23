@@ -1,4 +1,4 @@
-import NoResultFound from "../NoResultFound";
+import ResultContainer from "../common/ResultContainer";
 import KanjiEntry from "./KanjiEntry";
 import { searchKanji } from "@/api";
 
@@ -7,13 +7,13 @@ const KanjiList = async ({ query }: { query: string }) => {
   const kanji = response.data.kanji;
 
   return (
-    <div className="h-full w-full max-w-4xl space-y-8">
-      {kanji.length ? (
-        kanji.map((kanji, key) => <KanjiEntry key={key} data={kanji} />)
-      ) : (
-        <NoResultFound />
-      )}
-    </div>
+    <ResultContainer>
+      {kanji
+        .sort((a, b) => (a.frequency || 9999) - (b.frequency || 9999))
+        .map((kanji, key) => (
+          <KanjiEntry key={key} data={kanji} />
+        ))}
+    </ResultContainer>
   );
 };
 

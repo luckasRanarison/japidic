@@ -10,7 +10,9 @@ const SearchInput = () => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const [input, setInput] = useState(searchParams.get("query") || "");
-  const [option, setOption] = useState(SearchType.Word);
+  const [type, setOption] = useState<SearchType>(
+    parseInt(searchParams.get("type") || "0")
+  );
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(() => event.target.value);
@@ -22,7 +24,7 @@ const SearchInput = () => {
 
   const handleSearch = () => {
     if (input) {
-      push(`/search?type=${option}&query=${input}`);
+      push(`/search?type=${type}&query=${input}`);
     }
   };
 
@@ -32,7 +34,7 @@ const SearchInput = () => {
       flex rounded-md shadow-md duration-300
       bg-white text-secondary dark:text-light dark:bg-darkoverlay"
     >
-      <SearchSelect value={option} onSelect={handleSelect} />
+      <SearchSelect value={type} onSelect={handleSelect} />
       <input
         type="search"
         value={input}

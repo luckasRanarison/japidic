@@ -1,4 +1,4 @@
-import SearchInput from "@/components/search/SearchInput";
+import SearchInput from "@/components/search/input/SearchInput";
 import { SearchType, tagMap } from "@/utils/search";
 import { Suspense } from "react";
 

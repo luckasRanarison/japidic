@@ -10,11 +10,12 @@ const Error = ({ reset }: { reset: () => void }) => {
     >
       <RiErrorWarningLine size={60} />
       <div className="mt-2 mb-8 font-semibold text-2xl">
-        An error occured :'(
+        An error occured :&apos;(
       </div>
       <button
         className="py-2 px-6 space-x-2 flex items-center rounded-md
-        text-light dark:text-darkbg bg-primary hover:bg-secondary dark:hover:text-light"
+        text-light dark:text-darkbg bg-primary 
+        hover:bg-secondary dark:hover:text-light"
         onClick={reset}
       >
         <RiRestartLine />

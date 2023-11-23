@@ -1,26 +1,19 @@
-import { extractPos, pascalToSpaced } from "@/utils/word";
-import { RiArrowRightDoubleFill, RiLinkM } from "react-icons/ri";
+import { RiArrowRightDoubleFill } from "react-icons/ri";
 import StyledLink from "../../common/StyledLink";
 import Furigana from "../../common/Furigana";
-import PitchAccent from "./PichAccent";
-import ButtonWrapper from "../ButtonWrapper";
-import EntryContainer from "../EntryContainer";
+import PitchAccent from "./PitchAccent";
+import ButtonWrapper from "../common/ButtonWrapper";
+import EntryContainer from "../common/EntryContainer";
+import WordSense from "./WordSense";
 
-type EntryProps = {
-  data: Word;
-};
-
-const WordEntry = ({ data }: EntryProps) => (
+const WordEntry = ({ data }: { data: Word }) => (
   <EntryContainer>
     <div
       className="space-y-6 flex flex-col justify-between
       sm:space-y-0 sm:flex-row"
     >
       <div className="space-y-4">
-        <div
-          className="space-y-2 flex flex-col items-start
-          md:space-x-4 md:flex-row md:items-end"
-        >
+        <div className="flex flex-row flex-wrap items-end gap-x-6 gap-y-2">
           {data.reading.furigana ? (
             <Furigana data={data.reading.furigana} />
           ) : (
@@ -44,39 +37,7 @@ const WordEntry = ({ data }: EntryProps) => (
         writting={data.reading.kanji ? data.reading.kanji : data.reading.kana}
       />
     </div>
-    <div className="">
-      {data.senses.map((sense, index) => (
-        <div key={index} className="space-y-2">
-          {sense.pos && (
-            <div className="font-semibold">
-              {JSON.stringify(data.senses[index - 1]?.pos) !=
-                JSON.stringify(sense.pos) && extractPos(sense.pos)}
-            </div>
-          )}
-          <div>
-            <span className="mr-4 font-semibold text-sm">{index + 1}.</span>
-            <span className="text-dark dark:text-light">
-              {sense.glosses.join(", ")}
-            </span>
-          </div>
-          {sense.xref && (
-            <div className="flex items-center space-x-1">
-              <RiLinkM className="text-secondary" />
-              <span>See also </span>
-              <StyledLink href={`/search?type=0&query=${sense.xref}`} internal>
-                {sense.xref}
-              </StyledLink>
-            </div>
-          )}
-          <div className="opacity-70 text-sm">
-            {[sense.field && sense.field + "Term", sense.misc]
-              .map((value) => value && pascalToSpaced(value))
-              .filter((value) => value)
-              .join(", ")}
-          </div>
-        </div>
-      ))}
-    </div>
+    <WordSense data={data.senses} />
     <div className="flex items-center space-x-2">
       <RiArrowRightDoubleFill className="text-primary" />
       <StyledLink

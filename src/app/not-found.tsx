@@ -13,7 +13,8 @@ const NotFound = () => (
     <Link
       href="/"
       className="py-2 px-6 space-x-2 flex items-center rounded-md
-        text-light dark:text-darkbg bg-primary hover:bg-secondary dark:hover:text-light"
+      text-light dark:text-darkbg bg-primary 
+      hover:bg-secondary dark:hover:text-light"
     >
       <RiHome2Line />
       <div>Homepage</div>

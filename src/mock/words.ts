@@ -1,6 +1,40 @@
 const words: Word[] = [
   {
     reading: {
+      kana: "はし",
+      kanji: "橋",
+      furigana: "[橋|はし]",
+    },
+    common: true,
+    senses: [
+      {
+        glosses: ["bridge"],
+        pos: [
+          {
+            Noun: "Normal",
+          },
+        ],
+        language: "English",
+      },
+    ],
+    audio: "/resource/audio/tofugu/1237410",
+    pitch: [
+      {
+        part: "は",
+        high: false,
+      },
+      {
+        part: "し",
+        high: true,
+      },
+      {
+        part: "",
+        high: false,
+      },
+    ],
+  },
+  {
+    reading: {
       kana: "マダガスカル",
       kanji: "馬達加斯加",
       furigana: "[馬達加斯加|マダガスカル]",

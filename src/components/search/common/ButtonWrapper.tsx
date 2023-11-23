@@ -16,8 +16,8 @@ const ButtonWrapper = ({ audio, writting }: WrapperProps) => {
     }
   };
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(writting);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(writting);
   };
 
   const handleShare = () => {

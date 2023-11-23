@@ -35,14 +35,14 @@ const Navbar = () => {
       className={`z-20 top-0 sticky py-5 px-8 duration-300
       flex items-center justify-between
       text-secondary bg-light dark:text-light dark:bg-darkbg ${
-        scrollY > 20 && "shadow-md"
+        scrollY > 50 && "shadow-md bg-white"
       }`}
     >
       <div className="flex items-center space-x-3">
         <Image src={Icon} alt="icon" height={35} />
         <span className="font-semibold text-xl">
           <span>j</span>
-          <span className="text-primary dark:text-light">API</span>
+          <span className="text-primary">API</span>
           <span>dic</span>
         </span>
       </div>

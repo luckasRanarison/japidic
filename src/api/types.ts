@@ -59,26 +59,30 @@ type PartOfSpeech =
   | { [key: string]: string }
   | { [key: string]: { [key: string]: string } };
 
+type Sense = {
+  glosses: string[];
+  language: Language;
+  pos?: PartOfSpeech[];
+  dialect?: string;
+  field?: string;
+  information?: string;
+  antonym?: string;
+  misc?: string;
+  xref?: string;
+};
+
+type Pitch = {
+  part: string;
+  high: boolean;
+};
+
 type Word = {
   reading: Reading;
   altReadings?: Reading[];
   common: boolean;
-  senses: {
-    glosses: string[];
-    language: Language;
-    pos?: PartOfSpeech[];
-    dialect?: string;
-    field?: string;
-    information?: string;
-    antonym?: string;
-    misc?: string;
-    xref?: string;
-  }[];
+  senses: Sense[];
   audio?: string;
-  pitch?: {
-    part: string;
-    high: boolean;
-  }[];
+  pitch?: Pitch[];
 };
 
 type WordResponse = {

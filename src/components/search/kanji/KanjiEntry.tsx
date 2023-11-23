@@ -3,17 +3,13 @@ import {
   RiPenNibFill,
   RiTimer2Fill,
 } from "react-icons/ri";
-import ButtonWrapper from "../ButtonWrapper";
-import EntryContainer from "../EntryContainer";
+import ButtonWrapper from "../common/ButtonWrapper";
+import EntryContainer from "../common/EntryContainer";
 import KanjiInfo from "./KanjiInfo";
 import KanjiReadings from "./KanjiReadings";
 import Link from "next/link";
 
-type EntryProps = {
-  data: Kanji;
-};
-
-const KanjiEntry = ({ data }: EntryProps) => (
+const KanjiEntry = ({ data }: { data: Kanji }) => (
   <EntryContainer>
     <div
       className="flex flex-col space-y-4 
@@ -24,7 +20,7 @@ const KanjiEntry = ({ data }: EntryProps) => (
         className="space-y-4 w-full flex flex-col justify-between
         md:space-y-0 md:flex-row"
       >
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div>{data.meanings.join(", ")}</div>
           <KanjiReadings onyomi={data.onyomi} kunyomi={data.kunyomi} />
         </div>
@@ -32,8 +28,9 @@ const KanjiEntry = ({ data }: EntryProps) => (
       </div>
     </div>
     <div className="flex flex-row flex-wrap gap-y-2 gap-x-6">
-      {data.parts?.map((value) => (
+      {data.parts?.map((value, key) => (
         <Link
+          key={key}
           href={`/search?type=1&query=${value}`}
           className="text-xl text-primary"
         >

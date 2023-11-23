@@ -1,4 +1,4 @@
-import SearchInput from "@/components/search/SearchInput";
+import SearchInput from "@/components/search/input/SearchInput";
 
 const Page = () => (
   <div

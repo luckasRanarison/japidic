@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./index.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
+import Footer from "@/components/layout/footer/Footer";
 
 const notoSansJp = Noto_Sans_JP({
   fallback: [
-    "ヒラギノ角ゴ Pro W3",
-    "Hiragino Kaku Gothic Pro",
-    "Osaka",
-    "メイリオ",
-    "Meiryo",
     "ＭＳ Ｐゴシック",
     "MS PGothic",
+    "メイリオ",
+    "Meiryo",
     "sans-serif",
   ],
   subsets: ["latin"],
