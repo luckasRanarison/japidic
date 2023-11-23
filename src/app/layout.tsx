@@ -5,7 +5,16 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 const notoSansJp = Noto_Sans_JP({
-  fallback: ["Open Sans"],
+  fallback: [
+    "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro",
+    "Osaka",
+    "メイリオ",
+    "Meiryo",
+    "ＭＳ Ｐゴシック",
+    "MS PGothic",
+    "sans-serif",
+  ],
   subsets: ["latin"],
 });
 
@@ -15,14 +24,14 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en">
+  <html lang="en" className="h-full overflow-y-auto">
     <body
       className={`${notoSansJp.className}
-      flex flex-col h-1 min-h-screen
+      flex flex-col h-full overflow-y-auto
       bg-light dark:bg-darkbg duration-300`}
     >
       <Navbar />
-      {children}
+      <main className="flex-1">{children}</main>
       <Footer />
     </body>
   </html>

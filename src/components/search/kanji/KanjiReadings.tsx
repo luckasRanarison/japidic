@@ -1,11 +1,11 @@
 type ReadingProps = {
-  onyomi: string[];
-  kunyomi: string[];
+  onyomi?: string[];
+  kunyomi?: string[];
 };
 
 const KanjiReadings = ({ onyomi, kunyomi }: ReadingProps) => (
   <div className="flex flex-wrap flex-row gap-4">
-    {kunyomi.map((reading, key) => (
+    {kunyomi?.map((reading, key) => (
       <span
         key={key}
         className="py-1 px-3 rounded-md
@@ -14,7 +14,7 @@ const KanjiReadings = ({ onyomi, kunyomi }: ReadingProps) => (
         {reading}
       </span>
     ))}
-    {onyomi.map((reading, key) => (
+    {onyomi?.map((reading, key) => (
       <span
         key={key}
         className="py-1 px-3 rounded-md

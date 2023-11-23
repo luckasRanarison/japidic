@@ -33,17 +33,17 @@ type CompletionQuery = {
 type Kanji = {
   literal: string;
   meanings: string[];
-  grade: number;
+  grade?: number;
   strokeCount: number;
-  frequency: number;
-  jlpt: number;
-  onyomi: string[];
-  kunyomi: string[];
-  chinese: string[];
-  koreanR: string[];
-  koreanH: string[];
-  parts: string[];
-  radical: string;
+  frequency?: number;
+  jlpt?: number;
+  onyomi?: string[];
+  kunyomi?: string[];
+  chinese?: string[];
+  koreanR?: string[];
+  koreanH?: string[];
+  parts?: string[];
+  radical?: string;
   variant?: string[];
   strokeFrames?: string;
 };

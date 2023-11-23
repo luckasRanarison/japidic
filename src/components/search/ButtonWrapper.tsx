@@ -1,7 +1,6 @@
 "use client";
 
 import StyledButton from "@/components/common/StyledButton";
-import api from "@/api";
 import { RiFileCopyLine, RiShareLine, RiVolumeUpLine } from "react-icons/ri";
 
 type WrapperProps = {
@@ -12,13 +11,13 @@ type WrapperProps = {
 const ButtonWrapper = ({ audio, writting }: WrapperProps) => {
   const handleAudio = async () => {
     if (audio) {
-      // TODO
-      const file = await api.get(audio);
+      const audioElem = new Audio("https://jotoba.de" + audio);
+      await audioElem.play();
     }
   };
 
   const handleCopy = async () => {
-    await new Clipboard().writeText(writting);
+    await navigator.clipboard.writeText(writting);
   };
 
   const handleShare = () => {
@@ -26,7 +25,7 @@ const ButtonWrapper = ({ audio, writting }: WrapperProps) => {
   };
 
   return (
-    <div className="space-x-4">
+    <div className="flex items-start">
       {audio && <StyledButton icon={RiVolumeUpLine} onClick={handleAudio} />}
       <StyledButton icon={RiFileCopyLine} onClick={handleCopy} />
       <StyledButton icon={RiShareLine} onClick={handleShare} />

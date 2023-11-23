@@ -32,7 +32,7 @@ const KanjiEntry = ({ data }: EntryProps) => (
       </div>
     </div>
     <div className="flex flex-row flex-wrap gap-y-2 gap-x-6">
-      {data.parts.map((value) => (
+      {data.parts?.map((value) => (
         <Link
           href={`/search?type=1&query=${value}`}
           className="text-xl text-primary"

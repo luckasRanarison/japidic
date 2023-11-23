@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Icon from "@/assets/fuji.png";
 import { RiGithubFill, RiMoonFill, RiSunFill } from "react-icons/ri";
-import useScroll from "@/hooks/UseScroll";
+import useScroll from "@/hooks/useScroll";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {

@@ -4,16 +4,14 @@ function useScroll() {
   const [data, setData] = useState({
     scrollX: 0,
     scrollY: 0,
-    lastX: 0,
-    lastY: 0,
   });
 
   useEffect(() => {
     const handleScroll = () => {
       setData((last) => {
         return {
-          scrollX: window.scrollX,
-          scrollY: window.scrollY,
+          scrollX: document.body.scrollLeft,
+          scrollY: document.body.scrollTop,
           lastX: last.scrollX,
           lastY: last.scrollY,
         };
@@ -21,10 +19,10 @@ function useScroll() {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    document.body.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      document.body.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
