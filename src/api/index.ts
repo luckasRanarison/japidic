@@ -13,12 +13,14 @@ async function searchName(query: SearchQuery) {
   return api.post<NameResponse>("search/names", query);
 }
 
-async function searchKanji(query: SearchQuery | string[]) {
+async function searchKanji(query: SearchQuery) {
   return api.post<KanjiResponse>("search/kanji", query);
 }
 
-async function searchKanjiByRadicals(query: SearchQuery | string[]) {
-  return api.post<KanjiByRadicalResponse>("search/kanji/by_radical", query);
+async function searchKanjiByRadicals(radicals: string[]) {
+  return api.post<KanjiByRadicalResponse>("search/kanji/by_radical", {
+    radicals,
+  });
 }
 
 async function searchSentence(query: SearchQuery) {
