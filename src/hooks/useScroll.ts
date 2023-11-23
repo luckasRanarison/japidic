@@ -4,6 +4,8 @@ function useScroll() {
   const [data, setData] = useState({
     scrollX: 0,
     scrollY: 0,
+    lastX: 0,
+    lastY: 0,
   });
 
   useEffect(() => {

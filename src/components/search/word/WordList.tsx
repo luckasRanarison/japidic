@@ -7,7 +7,7 @@ const WordList = async ({ query }: { query: string }) => {
   const words = response.data.words;
 
   return (
-    <ResultContainer>
+    <ResultContainer type="Word (単語)">
       {words
         .sort((a, b) => (a.common && !b.common ? -1 : 1))
         .map((word, key) => (

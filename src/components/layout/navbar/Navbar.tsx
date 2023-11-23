@@ -32,10 +32,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`z-20 top-0 sticky py-5 px-8 duration-300
+      className={`z-20 top-0 py-4 px-8 duration-300
       flex items-center justify-between
-      text-secondary bg-light dark:text-light dark:bg-darkbg ${
-        scrollY > 50 && "shadow-md bg-white"
+      text-secondary dark:text-light dark:bg-darkbg ${
+        scrollY > 200 ? "sticky shadow-md bg-white" : "relative bg-light"
       }`}
     >
       <div className="flex items-center space-x-3">
@@ -46,7 +46,7 @@ const Navbar = () => {
           <span>dic</span>
         </span>
       </div>
-      <div className="flex space-x-6">
+      <div className="flex items-center space-x-6">
         <button
           onClick={toggleTheme}
           className="hover:rotate-180 hover:text-primary duration-500"

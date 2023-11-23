@@ -7,7 +7,7 @@ const KanjiList = async ({ query }: { query: string }) => {
   const kanji = response.data.kanji;
 
   return (
-    <ResultContainer>
+    <ResultContainer type="Kanji (漢字)">
       {kanji
         .sort((a, b) => (a.frequency || 9999) - (b.frequency || 9999))
         .map((kanji, key) => (

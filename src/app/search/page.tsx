@@ -14,7 +14,7 @@ const Page = async ({ searchParams }: PageProps) => {
   const ListTag = tagMap[type];
 
   return (
-    <div className="h-full p-6 space-y-16 flex flex-col items-center">
+    <div className="h-full p-3 space-y-10 flex flex-col items-center">
       <SearchInput />
       <Suspense fallback={<div>Loading...</div>}>
         <ListTag query={searchParams.query} />

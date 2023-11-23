@@ -31,7 +31,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
       <div
         className={`${
           isListVisible ? "visible opacity-100" : "invisible opacity-0"
-        } absolute top-16 -left-4
+        } z-10 absolute top-16 -left-4
           overflow-clip rounded-md shadow-md 
           bg-white dark:bg-darkoverlay duration-300`}
       >
