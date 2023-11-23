@@ -14,7 +14,7 @@ const Error = ({ reset }: { reset: () => void }) => {
       </div>
       <button
         className="py-2 px-6 space-x-2 flex items-center rounded-md
-        text-light dark:text-darkbg bg-primary 
+        text-light dark:text-dark bg-primary
         hover:bg-secondary dark:hover:text-light"
         onClick={reset}
       >

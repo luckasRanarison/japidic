@@ -25,7 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <body
       className={`${notoSansJp.className}
       flex flex-col h-full overflow-y-auto
-      bg-light dark:bg-darkbg duration-300`}
+      bg-light dark:bg-dark duration-300`}
     >
       <Navbar />
       <main className="flex-1">{children}</main>

@@ -34,7 +34,7 @@ const Navbar = () => {
     <nav
       className={`z-20 top-0 py-4 px-8 duration-300
       flex items-center justify-between
-      text-secondary dark:text-light dark:bg-darkbg ${
+      text-secondary dark:text-light dark:bg-dark ${
         scrollY > 200 ? "sticky shadow-md bg-white" : "relative bg-light"
       }`}
     >
