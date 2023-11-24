@@ -33,7 +33,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
         className={`${
           isListVisible ? "visible opacity-100" : "invisible opacity-0"
         } z-10 absolute top-16 -left-4
-        overflow-clip rounded-md shadow-md
+        overflow-clip rounded-md shadow-sm shadow-shadow
         bg-white dark:bg-darkoverlay duration-300`}
       >
         {Object.values(optionMap).map(

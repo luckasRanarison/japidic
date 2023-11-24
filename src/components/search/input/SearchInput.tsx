@@ -31,7 +31,7 @@ const SearchInput = () => {
   return (
     <div
       className="w-full max-w-full md:max-w-md 
-      flex rounded-md shadow-md duration-300
+      flex rounded-md shadow-sm duration-300
       bg-white text-secondary dark:text-light dark:bg-darkoverlay"
     >
       <SearchSelect value={type} onSelect={handleSelect} />

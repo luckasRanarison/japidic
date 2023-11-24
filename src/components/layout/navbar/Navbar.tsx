@@ -35,7 +35,9 @@ const Navbar = () => {
       className={`z-20 top-0 py-4 px-8 duration-300
       flex items-center justify-between
       text-secondary dark:text-light dark:bg-dark ${
-        scrollY > 200 ? "sticky shadow-md bg-white" : "relative bg-light"
+        scrollY > 200
+          ? "sticky shadow-sm shadow-shadow bg-white"
+          : "relative bg-light"
       }`}
     >
       <div className="flex items-center space-x-3">

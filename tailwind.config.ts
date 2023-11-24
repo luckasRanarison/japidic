@@ -19,6 +19,7 @@ const config: Config = {
       transparent: "#FFFFFF00",
       dark: "#121212",
       darkoverlay: "#2C2C2C",
+      shadow: "#00000025",
     },
     extend: {},
   },
