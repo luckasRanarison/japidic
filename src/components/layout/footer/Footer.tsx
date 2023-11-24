@@ -25,7 +25,7 @@ const Footer = async () => {
         <div className="flex space-x-6">
           <GithubStat path="stargazers" icon={RiStarLine} number={0} />
           <GithubStat path="forks" icon={RiGitBranchLine} number={0} />
-          <GithubStat path="wathcers" icon={RiEyeLine} number={0} />
+          <GithubStat path="watchers" icon={RiEyeLine} number={0} />
         </div>
         <div>© Licensed under the MIT License.</div>
       </div>
