@@ -115,7 +115,7 @@ type NameType =
 
 type JapaneseName = {
   kana: string;
-  kanji: string;
+  kanji?: string;
   transcription: string;
   nameType: NameType[];
 };

@@ -13,7 +13,7 @@ const NameEntry = ({ data }: { data: JapaneseName }) => (
       </div>
       <div className="text-dark space-y-2">
         {data.transcription.split(",").map((trans, index) => (
-          <div>
+          <div key={index}>
             <span className="mr-4 font-semibold text-sm text-secondary dark:text-white">
               {index + 1}.
             </span>
@@ -22,7 +22,7 @@ const NameEntry = ({ data }: { data: JapaneseName }) => (
         ))}
       </div>
     </div>
-    <ButtonWrapper writting="TODO" />
+    <ButtonWrapper writting={data.kanji || data.kana} />
   </EntryContainer>
 );
 

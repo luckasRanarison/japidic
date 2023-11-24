@@ -5,4 +5,5 @@ const Loader = () => (
     <div className="h-4 w-4 bg-secondary rounded-full animate-bounce"></div>
   </div>
 );
+
 export default Loader;

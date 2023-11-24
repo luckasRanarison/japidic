@@ -5,9 +5,9 @@ const PitchAccent = ({ data }: { data: Pitch[] }) => (
         <div
           key={index}
           className={`p-1 flex items-center 
-          ${
-            data[index - 1] && !data[index - 1].high && "border-l-2"
-          } border-t-2 border-primary`}
+          ${data[index - 1] && !data[index - 1].high && "border-l-2"} ${
+            value.part && "border-t-2"
+          } border-primary`}
         >
           <div>{value.part}</div>
         </div>
