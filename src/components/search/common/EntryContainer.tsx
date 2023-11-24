@@ -1,8 +1,13 @@
-const EntryContainer = ({ children }: { children: React.ReactNode }) => {
+type ContainerProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+
+const EntryContainer = ({ children, className }: ContainerProps) => {
   return (
     <div
-      className="px-8 py-6 space-y-4 rounded-md shadow-md
-      text-secondary dark:text-light bg-white dark:bg-darkoverlay"
+      className={`${className} px-8 py-6 rounded-md shadow-md
+      text-secondary dark:text-light bg-white dark:bg-darkoverlay`}
     >
       {children}
     </div>
