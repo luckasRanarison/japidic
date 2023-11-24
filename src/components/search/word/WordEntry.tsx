@@ -6,7 +6,12 @@ import ButtonWrapper from "../common/ButtonWrapper";
 import EntryContainer from "../common/EntryContainer";
 import WordSense from "./WordSense";
 
-const WordEntry = ({ data }: { data: Word }) => (
+type EntryProps = {
+  data: Word;
+  detailed: boolean;
+};
+
+const WordEntry = ({ data, detailed }: EntryProps) => (
   <EntryContainer>
     <div
       className="space-y-6 flex flex-col justify-between
@@ -37,17 +42,20 @@ const WordEntry = ({ data }: { data: Word }) => (
         writting={data.reading.kanji ? data.reading.kanji : data.reading.kana}
       />
     </div>
-    <WordSense data={data.senses} />
-    <div className="flex items-center space-x-2">
-      <RiArrowRightDoubleFill className="text-primary" />
-      <StyledLink
-        href={`/defifinition/${
-          data.reading.kanji ? data.reading.kanji : data.reading.kana
-        }`}
-      >
-        More details
-      </StyledLink>
-    </div>
+    <WordSense data={data.senses} detailed={detailed} />
+    {!detailed && (
+      <div className="flex items-center space-x-2">
+        <RiArrowRightDoubleFill className="text-primary" />
+        <StyledLink
+          href={`/word/${
+            data.reading.kanji ? data.reading.kanji : data.reading.kana
+          }`}
+          internal
+        >
+          Read more
+        </StyledLink>
+      </div>
+    )}
   </EntryContainer>
 );
 export default WordEntry;

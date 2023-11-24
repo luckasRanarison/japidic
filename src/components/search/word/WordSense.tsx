@@ -2,9 +2,14 @@ import StyledLink from "@/components/common/StyledLink";
 import { extractPos, pascalToSpaced } from "@/utils/word";
 import { RiLinkM } from "react-icons/ri";
 
-const WordSense = ({ data }: { data: Sense[] }) => (
-  <div>
-    {data.map((sense, index) => (
+type SenseProps = {
+  data: Sense[];
+  detailed: boolean;
+};
+
+const WordSense = ({ data, detailed }: SenseProps) => (
+  <div className="space-y-2">
+    {(detailed ? data : data.slice(0, 2)).map((sense, index) => (
       <div key={index} className="space-y-2">
         {sense.pos && (
           <div className="font-semibold">

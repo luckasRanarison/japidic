@@ -10,7 +10,7 @@ const WordList = async ({ query }: { query: string }) => {
       {data.words
         .sort((a, b) => (a.common && !b.common ? -1 : 1))
         .map((word, key) => (
-          <WordEntry key={key} data={word} />
+          <WordEntry key={key} data={word} detailed={false} />
         ))}
     </ResultContainer>
   );
