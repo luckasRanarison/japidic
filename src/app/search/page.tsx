@@ -1,6 +1,5 @@
 import SearchInput from "@/components/search/input/SearchInput";
 import { SearchType, tagMap } from "@/utils/search";
-import { Suspense } from "react";
 
 type PageProps = {
   searchParams: {
@@ -16,9 +15,7 @@ const Page = async ({ searchParams }: PageProps) => {
   return (
     <div className="h-full p-3 space-y-10 flex flex-col items-center">
       <SearchInput />
-      <Suspense fallback={<div>Loading...</div>}>
-        <ListTag query={searchParams.query} />
-      </Suspense>
+      <ListTag query={searchParams.query} />
     </div>
   );
 };
