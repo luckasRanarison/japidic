@@ -7,6 +7,12 @@ const Furigana = ({ data, size }: FuriganaProps) => {
   const match = data.matchAll(/\[([^\]]+)\]([^\[]*)/g);
   const partial = Array.from(match).flatMap((value) => value.slice(1));
 
+  if (!partial.length) {
+    return (
+      <div className={`text-${size == "medium" ? "md" : "2xl"}`}>{data}</div>
+    );
+  }
+
   const furigana = partial.flatMap((value) => {
     const elements = value.split("|");
     const kanjiChars = Array.from(elements[0]);
