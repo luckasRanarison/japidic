@@ -24,29 +24,30 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
     >
       <span>{optionMap[value].symbol}</span>
       <span className="hidden md:block">{optionMap[value].name}</span>
-      <RiArrowDownSLine
-        className={`stroke-1 duration-200 ${isListVisible && "rotate-180"}`}
-      />
-
+      <button>
+        <RiArrowDownSLine
+          className={`stroke-1 duration-200 ${isListVisible && "rotate-180"}`}
+        />
+      </button>
       <div
         className={`${
           isListVisible ? "visible opacity-100" : "invisible opacity-0"
         } z-10 absolute top-16 -left-4
-          overflow-clip rounded-md shadow-md 
-          bg-white dark:bg-darkoverlay duration-300`}
+        overflow-clip rounded-md shadow-md 
+        bg-white dark:bg-darkoverlay duration-300`}
       >
         {Object.values(optionMap).map(
           ({ symbol, name }, index) =>
             index !== value && (
-              <div
+              <button
                 key={index}
-                className="py-3 px-5 flex font-sembibold
+                className="w-full py-3 px-5 flex font-sembibold
                 hover:text-light hover:bg-secondary"
                 onClick={() => onSelect(index)}
               >
                 <span className="mr-4">{symbol}</span>
                 <span>{name}</span>
-              </div>
+              </button>
             )
         )}
       </div>

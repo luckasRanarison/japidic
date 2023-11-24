@@ -1,8 +1,4 @@
-type FuriganaProps = {
-  data: string;
-};
-
-const Furigana = ({ data }: FuriganaProps) => {
+const Furigana = ({ data }: { data: string }) => {
   const match = data.matchAll(/\[([^\]]+)\]([^\[]*)/g);
   const partial = Array.from(match).flatMap((value) => value.slice(1));
 

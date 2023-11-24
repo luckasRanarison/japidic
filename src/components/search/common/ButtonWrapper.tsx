@@ -1,6 +1,6 @@
 "use client";
 
-import StyledButton from "@/components/common/StyledButton";
+import StyledButton from "@/components/search/common/StyledButton";
 import { RiFileCopyLine, RiShareLine, RiVolumeUpLine } from "react-icons/ri";
 
 type WrapperProps = {

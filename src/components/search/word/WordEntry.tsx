@@ -1,6 +1,6 @@
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import StyledLink from "../../common/StyledLink";
-import Furigana from "../../common/Furigana";
+import Furigana from "../common/Furigana";
 import PitchAccent from "./PitchAccent";
 import ButtonWrapper from "../common/ButtonWrapper";
 import EntryContainer from "../common/EntryContainer";
