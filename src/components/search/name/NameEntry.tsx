@@ -2,10 +2,7 @@ import ButtonWrapper from "../common/ButtonWrapper";
 import EntryContainer from "../common/EntryContainer";
 
 const NameEntry = ({ data }: { data: JapaneseName }) => (
-  <EntryContainer
-    className="space-y-4 flex flex-col justify-between
-    sm:space-y-0 sm:flex-row"
-  >
+  <EntryContainer className="flex flex-col justify-between sm:space-y-0 sm:flex-row">
     <div className="space-y-3">
       <div className="text-lg">
         <span>{data.kana}</span>

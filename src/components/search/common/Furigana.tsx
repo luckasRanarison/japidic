@@ -1,4 +1,9 @@
-const Furigana = ({ data }: { data: string }) => {
+type FuriganaProps = {
+  data: string;
+  size: "medium" | "big";
+};
+
+const Furigana = ({ data, size }: FuriganaProps) => {
   const match = data.matchAll(/\[([^\]]+)\]([^\[]*)/g);
   const partial = Array.from(match).flatMap((value) => value.slice(1));
 
@@ -14,11 +19,16 @@ const Furigana = ({ data }: { data: string }) => {
   });
 
   return (
-    <div className="flex">
+    <div className="flex flex-row flex-wrap">
       {furigana.map(([reading, writting], index) => (
-        <div key={index} className="flex flex-col items-center justify-end">
+        <div
+          key={index}
+          className="flex flex-col items-center justify-end break-words"
+        >
           <div className="text-xs">{reading}</div>
-          <div className="text-2xl">{writting}</div>
+          <div className={`text-${size == "medium" ? "md" : "2xl"}`}>
+            {writting}
+          </div>
         </div>
       ))}
     </div>

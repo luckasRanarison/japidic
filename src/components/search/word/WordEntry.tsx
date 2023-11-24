@@ -15,7 +15,7 @@ const WordEntry = ({ data }: { data: Word }) => (
       <div className="space-y-4">
         <div className="flex flex-row flex-wrap items-end gap-x-6 gap-y-2">
           {data.reading.furigana ? (
-            <Furigana data={data.reading.furigana} />
+            <Furigana data={data.reading.furigana} size="big" />
           ) : (
             <div className="text-2xl">
               {data.reading.kanji || data.reading.kana}
