@@ -9,9 +9,9 @@ import { SearchType } from "@/utils/search";
 const SearchInput = () => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
-  const [input, setInput] = useState(searchParams.get("query") || "");
+  const [input, setInput] = useState(searchParams.get("query") ?? "");
   const [type, setOption] = useState<SearchType>(
-    parseInt(searchParams.get("type") || "0")
+    parseInt(searchParams.get("type") ?? "0")
   );
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +28,11 @@ const SearchInput = () => {
     }
   };
 
+  // TODO: use form + onSubmit
+  const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    event.key == "Enter" && handleSearch();
+  }
+
   return (
     <div
       className="w-full max-w-full md:max-w-md 
@@ -39,6 +44,7 @@ const SearchInput = () => {
         type="search"
         value={input}
         onChange={handleInput}
+        onKeyUp={handleEnterKey}
         placeholder="Type to search..."
         className="py-3 px-6 w-full bg-transparent focus:outline-none"
       />

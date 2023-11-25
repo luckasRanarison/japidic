@@ -8,7 +8,10 @@ const KanjiList = async ({ query }: { query: string }) => {
   return (
     <ResultContainer type="Kanji (漢字)">
       {data.kanji
-        .sort((a, b) => (a.frequency || 9999) - (b.frequency || 9999))
+        .sort((a, b) => {
+          const delta = (a.frequency ?? Infinity) - (b.frequency ?? Infinity);
+          return isNaN(delta) ? 0 : delta;
+        })
         .map((kanji, key) => (
           <KanjiEntry key={key} data={kanji} />
         ))}
