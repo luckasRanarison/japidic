@@ -1,47 +1,60 @@
-function formatPos(pos: string) {
+function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function normalizePos(pos: string) {
   const posMap = new Map([
     ["Keiyoushi", "I"],
     ["Expr", "Expression"],
     ["SoundFx", "Sound effect"],
+    ["IkuYuku", "Iku/yuku"],
   ]);
-  return posMap.get(pos) || pos;
+
+  return posMap.get(pos) ?? capitalize(pos);
 }
 
-function pascalToSpaced(...s: string[]) {
-  const concat = s
-    .map(formatPos)
-    .map((value) => value.charAt(0).toUpperCase() + value.slice(1))
-    .join("");
+function pascalToSpaced(...str: string[]) {
+  const spaced = str
+    .join("")
+    .replace(/(?<!\()([A-Z])/g, " $1")
+    .toLowerCase()
+    .trim();
 
-  return (
-    concat.charAt(0) +
-    concat
-      .slice(1)
-      .replace(/([A-Z])/g, " $1")
-      .toLowerCase()
-  );
+  return capitalize(spaced);
+}
+
+function getNestedPos(pos: PartOfSpeech): string[] {
+  if (typeof pos === "string") {
+    return [pos];
+  } else {
+    const entries = Object.entries(pos);
+
+    if (entries.length > 1) {
+      const objectEntries = entries.map(([key, value]) => {
+        return { [key]: value };
+      });
+
+      return objectEntries.map(getNestedPos).flat();
+    } else {
+      return [entries[0][0], ...getNestedPos(entries[0][1])];
+    }
+  }
 }
 
 function extractPos(pos: PartOfSpeech[]) {
   const formatedPos = pos.map((p) => {
-    if (typeof p == "string") {
-      return pascalToSpaced(p);
+    const posArray = getNestedPos(p)
+      .map(normalizePos)
+      .filter((p) => p !== "Normal");
+
+    if (posArray.length < 3) {
+      return pascalToSpaced(...posArray.reverse());
     } else {
-      const key = Object.keys(p).at(0) as string;
-      const value = Object.values(p).at(0);
-
-      if (typeof value == "string") {
-        if (value == "Normal") {
-          return pascalToSpaced(key);
-        } else {
-          return pascalToSpaced(value, key);
-        }
-      } else {
-        const innerkey = Object.keys(value).at(0) as string;
-        const innerValue = Object.values(value).at(0) as string;
-
-        return pascalToSpaced(innerkey, key, innerValue);
-      }
+      return pascalToSpaced(
+        posArray[1],
+        posArray[0],
+        " (" + posArray.at(-1) + ")"
+      );
     }
   });
 

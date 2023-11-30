@@ -56,8 +56,12 @@ type Reading = {
 
 type PartOfSpeech =
   | string
-  | { [key: string]: string }
-  | { [key: string]: { [key: string]: string } };
+  | {
+      [key: string]:
+        | string
+        | { [key: string]: string }
+        | { [key: string]: { [key: string]: string } };
+    };
 
 type Sense = {
   glosses: string[];

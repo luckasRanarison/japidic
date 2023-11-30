@@ -28,39 +28,44 @@ const Page = async ({ params }: PageProps) => {
   const dataResponse = getWordData(query);
   const sentenceResponse = getSentences(query);
   const [data, sentences] = await Promise.all([dataResponse, sentenceResponse]);
+  const wordFiltered = data.words.filter(
+    (value) => (value.reading.kanji || value.reading.kana) === query
+  );
+
+  const kanjiFiltered = data.kanji.filter((value) =>
+    kanji.includes(value.literal)
+  );
 
   return (
     <div className="h-full p-3 md:p-6 space-y-10 flex flex-col items-center">
       <SearchInput />
       <div
-        className="w-full flex flex-col gap-6
+        className="max-w-5xl w-full flex flex-col gap-6
         md:flex-row md:items-start md:justify-around"
       >
         <div className="flex flex-col md:w-2/3 space-y-6">
           <ResultContainer type="Meaning (意み味)">
-            {data.words
-              .filter(
-                (value) => (value.reading.kanji || value.reading.kana) === query
-              )
-              .map((word, key) => (
-                <WordEntry key={key} data={word} detailed />
-              ))}
-          </ResultContainer>
-          <ResultContainer type="Sentence (文)">
-            {sentences.map((sentence, key) => (
-              <SentenceEntry key={key} data={sentence} />
+            {wordFiltered.map((word, key) => (
+              <WordEntry key={key} data={word} detailed />
             ))}
           </ResultContainer>
+          {sentences.length > 1 && (
+            <ResultContainer type="Example sentences (文)">
+              {sentences.map((sentence, key) => (
+                <SentenceEntry key={key} data={sentence} />
+              ))}
+            </ResultContainer>
+          )}
         </div>
-        <div className="flex flex-col md:w-1/3 space-y-6">
-          <ResultContainer type="Kanji (漢字)">
-            {data.kanji
-              .filter((value) => kanji.includes(value.literal))
-              .map((kanji, key) => (
+        {kanjiFiltered.length > 0 && (
+          <div className="flex flex-col md:w-1/3 min-w-[400px] space-y-6">
+            <ResultContainer type="Kanji in this word (漢字)">
+              {kanjiFiltered.map((kanji, key) => (
                 <KanjiEntry key={key} data={kanji} />
               ))}
-          </ResultContainer>
-        </div>
+            </ResultContainer>
+          </div>
+        )}
       </div>
     </div>
   );

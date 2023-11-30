@@ -40,6 +40,7 @@ const WordSense = ({ data, detailed }: SenseProps) => (
         </div>
       </div>
     ))}
+    {!detailed && data.length > 2 && <div>...</div>}
   </div>
 );
 
