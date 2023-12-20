@@ -6,16 +6,6 @@ import SentenceEntry from "@/components/search/sentence/SentenceEntry";
 import WordEntry from "@/components/search/word/WordEntry";
 import { isKanji } from "wanakana";
 
-async function getWordData(query: string) {
-  const { data } = await searchWord({ query });
-  return data;
-}
-
-async function getSentences(query: string) {
-  const { data } = await searchSentence({ query });
-  return data.sentences;
-}
-
 type PageProps = {
   params: {
     word: string;
@@ -25,8 +15,8 @@ type PageProps = {
 const Page = async ({ params }: PageProps) => {
   const query = decodeURIComponent(params.word);
   const kanji = Array.from(query).filter(isKanji);
-  const dataResponse = getWordData(query);
-  const sentenceResponse = getSentences(query);
+  const dataResponse = searchWord({ query });
+  const sentenceResponse = searchSentence({ query });
   const [data, sentences] = await Promise.all([dataResponse, sentenceResponse]);
   const wordFiltered = data.words.filter(
     (value) => (value.reading.kanji || value.reading.kana) === query

@@ -13,6 +13,7 @@ const notoSansJp = Noto_Sans_JP({
     "sans-serif",
   ],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

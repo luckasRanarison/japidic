@@ -3,11 +3,11 @@ import KanjiEntry from "./KanjiEntry";
 import { searchKanji } from "@/api";
 
 const KanjiList = async ({ query }: { query: string }) => {
-  const { data } = await searchKanji({ query });
+  const kanji = await searchKanji({ query });
 
   return (
     <ResultContainer type="Kanji (漢字)">
-      {data.kanji
+      {kanji
         .sort((a, b) => {
           const delta = (a.frequency ?? Infinity) - (b.frequency ?? Infinity);
           return isNaN(delta) ? 0 : delta;

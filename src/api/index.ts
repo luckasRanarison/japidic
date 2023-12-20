@@ -6,29 +6,36 @@ const api = applyCaseMiddleware(
 );
 
 async function searchWord(query: SearchQuery) {
-  return api.post<WordResponse>("search/words", query);
+  const res = await api.post<WordResponse>("search/words", query);
+  return res.data;
 }
 
 async function searchName(query: SearchQuery) {
-  return api.post<NameResponse>("search/names", query);
+  const res = await api.post<NameResponse>("search/names", query);
+  return res.data.names;
 }
 
 async function searchKanji(query: SearchQuery) {
-  return api.post<KanjiResponse>("search/kanji", query);
+  const res = await api.post<KanjiResponse>("search/kanji", query);
+  return res.data.kanji;
 }
 
 async function searchKanjiByRadicals(radicals: string[]) {
-  return api.post<KanjiByRadicalResponse>("search/kanji/by_radical", {
-    radicals,
-  });
+  const res = await api.post<KanjiByRadicalResponse>(
+    "search/kanji/by_radical",
+    { radicals }
+  );
+  return res.data;
 }
 
 async function searchSentence(query: SearchQuery) {
-  return api.post<SentenceResponse>("search/sentences", query);
+  const res = await api.post<SentenceResponse>("search/sentences", query);
+  return res.data.sentences;
 }
 
 async function getCompletion(query: CompletionQuery) {
-  return api.post<CompletionResponse>("suggestion", query);
+  const res = await api.post<CompletionResponse>("suggestion", query);
+  return res.data;
 }
 
 export {
