@@ -28,7 +28,7 @@ const SearchBar = () => {
   useEffect(() => {
     if (mode == "romaji") {
       setInput(toRomaji(input));
-    } else {
+    } else if (mode == "hiragana") {
       setInput(toHiragana(toRomaji(input))); // convert to romaji first to handle ん
     }
   }, [input, mode]);
