@@ -1,4 +1,4 @@
-import SearchInput from "@/components/search/input/SearchInput";
+import SearchBar from "@/components/search/input/SearchBar";
 import { SearchType, tagMap } from "@/utils/search";
 
 type PageProps = {
@@ -14,7 +14,7 @@ const Page = async ({ searchParams }: PageProps) => {
 
   return (
     <div className="h-full p-3 space-y-10 flex flex-col items-center">
-      <SearchInput />
+      <SearchBar />
       <ListTag query={searchParams.query} />
     </div>
   );

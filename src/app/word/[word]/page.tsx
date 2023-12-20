@@ -1,6 +1,6 @@
 import { searchSentence, searchWord } from "@/api";
 import ResultContainer from "@/components/search/common/ResultContainer";
-import SearchInput from "@/components/search/input/SearchInput";
+import SearchBar from "@/components/search/input/SearchBar";
 import KanjiEntry from "@/components/search/kanji/KanjiEntry";
 import SentenceEntry from "@/components/search/sentence/SentenceEntry";
 import WordEntry from "@/components/search/word/WordEntry";
@@ -28,7 +28,7 @@ const Page = async ({ params }: PageProps) => {
 
   return (
     <div className="h-full p-3 md:p-6 space-y-10 flex flex-col items-center">
-      <SearchInput />
+      <SearchBar />
       <div
         className="max-w-5xl w-full flex flex-col gap-6
         md:flex-row md:items-start md:justify-around"

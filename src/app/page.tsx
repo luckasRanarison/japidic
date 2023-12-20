@@ -1,4 +1,4 @@
-import SearchInput from "@/components/search/input/SearchInput";
+import SearchBar from "@/components/search/input/SearchBar";
 
 const Page = () => (
   <div
@@ -10,7 +10,7 @@ const Page = () => (
       <div className="text-7xl">辞書</div>
       <div className="text-xl opacity-60">Free Japanese dictionary</div>
     </div>
-    <SearchInput />
+    <SearchBar />
   </div>
 );
 
