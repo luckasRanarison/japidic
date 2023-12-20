@@ -15,7 +15,7 @@ const Tooltip = ({ children, text, className, onClick }: TooltipProps) => {
       <div
         className=" group-hover:block hidden
         absolute -bottom-14 w-max py-2 px-4
-        rounded-md text-sm text-light bg-secondary"
+        rounded-md text-sm text-light bg-secondary shadow-md"
       >
         {text}
       </div>

@@ -8,7 +8,7 @@ const SentenceEntry = ({ data }: { data: Sentence }) => (
       <Furigana data={data.furigana} size="medium" />
       <div>{data.translation}</div>
     </div>
-    <ButtonWrapper writting="TODO" />
+    <ButtonWrapper writting={data.content} />
   </EntryContainer>
 );
 

@@ -22,7 +22,7 @@ const NameEntry = ({ data }: { data: JapaneseName }) => (
         ))}
       </div>
     </div>
-    <ButtonWrapper writting={data.kanji || data.kana} />
+    <ButtonWrapper writting={data.kanji ?? data.kana} />
   </EntryContainer>
 );
 
