@@ -12,7 +12,7 @@ import Link from "next/link";
 const KanjiEntry = ({ data }: { data: Kanji }) => (
   <EntryContainer>
     <div
-      className="flex flex-col space-y-4 
+      className="flex flex-col space-y-4
       md:space-y-0 md:space-x-6 md:flex-row"
     >
       <div className="text-7xl">{data.literal}</div>

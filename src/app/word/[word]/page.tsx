@@ -39,7 +39,7 @@ const Page = async ({ params }: PageProps) => {
               <WordEntry key={key} data={word} detailed />
             ))}
           </ResultContainer>
-          {sentences.length > 1 && (
+          {sentences.length > 0 && (
             <ResultContainer type="Example sentences (文)">
               {sentences.map((sentence, key) => (
                 <SentenceEntry key={key} data={sentence} />

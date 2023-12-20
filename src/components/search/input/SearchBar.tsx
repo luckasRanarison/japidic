@@ -35,7 +35,7 @@ const SearchBar = () => {
 
   return (
     <div
-      className="w-full max-w-full md:max-w-md 
+      className="w-full max-w-full md:max-w-md
       flex rounded-md shadow-sm duration-300
       bg-white text-secondary dark:text-light dark:bg-darkoverlay"
     >
@@ -60,7 +60,7 @@ const SearchBar = () => {
         </Tooltip>
       </div>
       <button
-        className="px-4 rounded-r-md 
+        className="px-4 rounded-r-md
         text-white bg-secondary hover:bg-primary"
         onClick={handleSearch}
       >

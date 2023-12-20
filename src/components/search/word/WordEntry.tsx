@@ -30,7 +30,7 @@ const WordEntry = ({ data, detailed }: EntryProps) => (
         </div>
         {data.common && (
           <div
-            className="w-fit py-1 px-3 rounded-md text-sm 
+            className="w-fit py-1 px-3 rounded-md text-sm
             text-light bg-primary"
           >
             Common
