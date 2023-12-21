@@ -1,23 +1,24 @@
 type TooltipProps = {
   children?: React.ReactNode;
   text: string;
+  showTooltip?: boolean;
   className?: string;
   onClick: () => void;
 };
 
-const Tooltip = ({ children, text, className, onClick }: TooltipProps) => {
+const Tooltip = (props: TooltipProps) => {
   return (
     <div
-      onClick={onClick}
-      className={`relative group flex justify-center ${className}`}
+      onClick={props.onClick}
+      className={`relative group flex justify-center ${props.className}`}
     >
-      {children}
+      {props.children}
       <div
-        className=" group-hover:block hidden
+        className={`group-hover:block ${!props.showTooltip && "hidden"}
         absolute -bottom-14 w-max py-2 px-4
-        rounded-md text-sm text-light bg-secondary shadow-md"
+        rounded-md text-sm text-light bg-secondary shadow-md`}
       >
-        {text}
+        {props.text}
       </div>
     </div>
   );
