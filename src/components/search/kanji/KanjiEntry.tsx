@@ -31,7 +31,7 @@ const KanjiEntry = ({ data }: { data: Kanji }) => (
       {data.parts?.map((value, key) => (
         <Link
           key={key}
-          href={`/search?type=1&query=${value}`}
+          href={`/search?type=kanji&query=${value}`}
           className="text-xl text-primary"
         >
           {value}

@@ -27,7 +27,7 @@ const WordSense = ({ data, detailed }: SenseProps) => (
           <div className="flex items-center space-x-1">
             <RiLinkM className="text-secondary" />
             <span>See also </span>
-            <StyledLink href={`/search?type=0&query=${sense.xref}`} internal>
+            <StyledLink href={`/search?type=word&query=${sense.xref}`} internal>
               {sense.xref}
             </StyledLink>
           </div>
