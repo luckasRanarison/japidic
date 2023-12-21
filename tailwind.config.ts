@@ -11,6 +11,16 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      sans: [
+        "Noto Sans JP",
+        "ＭＳ Ｐゴシック",
+        "MS PGothic",
+        "メイリオ",
+        "Meiryo",
+        "sans-serif",
+      ],
+    },
     colors: {
       white: "#FFFFFF",
       light: "#E7E8ED",
