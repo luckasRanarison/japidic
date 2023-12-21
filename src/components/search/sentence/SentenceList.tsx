@@ -1,6 +1,6 @@
 import ResultContainer from "../common/ResultContainer";
 import SentenceEntry from "./SentenceEntry";
-import { searchSentence } from "@/api";
+import { searchSentence } from "@/api/jotoba";
 
 const SentenceList = async ({ query }: { query: string }) => {
   const sentences = await searchSentence({ query });

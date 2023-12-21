@@ -1,4 +1,4 @@
-import { searchWord } from "@/api";
+import { searchWord } from "@/api/jotoba";
 import WordEntry from "./WordEntry";
 import ResultContainer from "../common/ResultContainer";
 

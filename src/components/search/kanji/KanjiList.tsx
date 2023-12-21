@@ -1,6 +1,6 @@
 import ResultContainer from "../common/ResultContainer";
 import KanjiEntry from "./KanjiEntry";
-import { searchKanji } from "@/api";
+import { searchKanji } from "@/api/jotoba";
 
 const KanjiList = async ({ query }: { query: string }) => {
   const kanji = await searchKanji({ query });

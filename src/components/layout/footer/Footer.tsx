@@ -1,13 +1,10 @@
 import { RiEyeLine, RiGitBranchLine, RiStarLine } from "react-icons/ri";
 import StyledLink from "../../common/StyledLink";
 import GithubStat from "./GithubStat";
-import axios from "axios";
+import { getRepoStats } from "@/api/github";
 
 const Footer = async () => {
-  // const res = await axios.get(
-  //   "https://api.github.com/repos/luckasRanarison/japidic"
-  // );
-  // const parsed = await res.data;
+  const { stargazers, watchers, forks } = await getRepoStats();
 
   return (
     <footer
@@ -23,9 +20,9 @@ const Footer = async () => {
           <span>APIs.</span>
         </div>
         <div className="flex space-x-6">
-          <GithubStat path="stargazers" icon={RiStarLine} number={0} />
-          <GithubStat path="forks" icon={RiGitBranchLine} number={0} />
-          <GithubStat path="watchers" icon={RiEyeLine} number={0} />
+          <GithubStat path="stargazers" icon={RiStarLine} number={stargazers} />
+          <GithubStat path="forks" icon={RiGitBranchLine} number={forks} />
+          <GithubStat path="watchers" icon={RiEyeLine} number={watchers} />
         </div>
         <div>© Licensed under the MIT License.</div>
       </div>

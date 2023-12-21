@@ -1,4 +1,4 @@
-import { searchSentence, searchWord } from "@/api";
+import { searchSentence, searchWord } from "@/api/jotoba";
 import ResultContainer from "@/components/search/common/ResultContainer";
 import SearchBar from "@/components/search/input/SearchBar";
 import KanjiEntry from "@/components/search/kanji/KanjiEntry";
@@ -48,8 +48,8 @@ const Page = async ({ params }: PageProps) => {
           )}
         </div>
         {kanjiFiltered.length > 0 && (
-          <div className="flex flex-col md:w-1/3 min-w-[400px] space-y-6">
-            <ResultContainer type="Kanji in this word (漢字)">
+          <div className="flex flex-col md:w-1/3 space-y-6">
+            <ResultContainer type="Kanji in this word (漢字)" showCount={false}>
               {kanjiFiltered.map((kanji, key) => (
                 <KanjiEntry key={key} data={kanji} />
               ))}

@@ -3,10 +3,11 @@ import NoResultFound from "./NoResultFound";
 
 type ContainerProps = {
   type: string;
+  showCount?: boolean;
   children: React.ReactNode;
 };
 
-const ResultContainer = ({ children, type }: ContainerProps) => {
+const ResultContainer = ({ children, showCount = true, type }: ContainerProps) => {
   const count = React.Children.count(children);
 
   return (
@@ -18,9 +19,11 @@ const ResultContainer = ({ children, type }: ContainerProps) => {
             text-secondary dark:text-light"
           >
             <div className="font-semibold text-xl">{type}</div>
-            <div>
-              - {count} result{count > 1 && "s"} found
-            </div>
+            {showCount &&
+              <div>
+                - {count} result{count > 1 && "s"} found
+              </div>
+            }
           </div>
           <div className="h-full space-y-6">{children}</div>
         </>

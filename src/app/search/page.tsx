@@ -12,16 +12,14 @@ type PageProps = {
   };
 };
 
-const Page = async ({ searchParams: { type, query } }: PageProps) => {
-  return (
-    <div className="h-full p-3 space-y-10 flex flex-col items-center">
-      <SearchBar />
-      {type === "word" && <WordList query={query} />}
-      {type === "kanji" && <KanjiList query={query} />}
-      {type === "phrase" && <SentenceList query={query} />}
-      {type === "name" && <NameList query={query} />}
-    </div>
-  );
-};
+const Page = ({ searchParams: { type, query } }: PageProps) => (
+  <div className="h-full p-3 space-y-10 flex flex-col items-center">
+    <SearchBar />
+    {type === "word" && <WordList query={query} />}
+    {type === "kanji" && <KanjiList query={query} />}
+    {type === "phrase" && <SentenceList query={query} />}
+    {type === "name" && <NameList query={query} />}
+  </div>
+);
 
 export default Page;

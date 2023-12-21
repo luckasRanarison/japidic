@@ -1,4 +1,4 @@
-import { searchName } from "@/api";
+import { searchName } from "@/api/jotoba";
 import NameEntry from "./NameEntry";
 import ResultContainer from "../common/ResultContainer";
 
