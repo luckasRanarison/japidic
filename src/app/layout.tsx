@@ -6,7 +6,14 @@ import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "japidic",
-  description: "Japanese dictionary",
+  description: "Free online japanese dictionary",
+  keywords: ["japanese", "dictionary"],
+  openGraph: {
+    title: "japidic",
+    description: "Free online japanese dictionary",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
