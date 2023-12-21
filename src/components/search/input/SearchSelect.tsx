@@ -36,14 +36,14 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
         overflow-clip rounded-md shadow-sm shadow-shadow
         bg-white dark:bg-darkoverlay duration-300`}
       >
-        {Object.values(optionMap).map(
-          ({ symbol, name }, index) =>
-            index !== value && (
+        {Object.entries(optionMap).map(
+          ([key, { symbol, name }]) =>
+            key !== value && (
               <button
-                key={index}
+                key={key}
                 className="w-full py-3 px-5 flex font-sembibold
                 hover:text-light hover:bg-secondary"
-                onClick={() => onSelect(index)}
+                onClick={() => onSelect(key as SearchType)}
               >
                 <span className="mr-4">{symbol}</span>
                 <span>{name}</span>

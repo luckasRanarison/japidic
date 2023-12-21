@@ -3,14 +3,14 @@ function capitalize(str: string) {
 }
 
 function normalizePos(pos: string) {
-  const posMap = new Map([
-    ["Keiyoushi", "I"],
-    ["Expr", "Expression"],
-    ["SoundFx", "Sound effect"],
-    ["IkuYuku", "Iku/yuku"],
-  ]);
+  const posMap: Record<string, string | null> = {
+    Keiyoushi: "I",
+    Expr: "Expression",
+    SoundFx: "Sound effect",
+    IkuYuku: "Iku/yuku",
+  };
 
-  return posMap.get(pos) ?? capitalize(pos);
+  return posMap[pos] ?? capitalize(pos);
 }
 
 function pascalToSpaced(...str: string[]) {

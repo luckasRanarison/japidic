@@ -15,8 +15,8 @@ const SearchBar = () => {
   const searchParams = useSearchParams();
   const [mode, setMode] = useState<WrittingMode>();
   const [input, setInput] = useState(searchParams.get("query") ?? "");
-  const [type, setOption] = useState<SearchType>(
-    parseInt(searchParams.get("type") ?? "0")
+  const [type, setOption] = useState(
+    (searchParams.get("type") as SearchType) ?? "word"
   );
 
   const handleSearch = () => {
