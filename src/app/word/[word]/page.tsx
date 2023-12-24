@@ -51,7 +51,7 @@ const Page = async ({ params }: PageProps) => {
           <div className="flex flex-col md:w-1/3 space-y-6">
             <ResultContainer type="Kanji in this word (漢字)" showCount={false}>
               {kanjiFiltered.map((kanji, key) => (
-                <KanjiEntry key={key} data={kanji} />
+                <KanjiEntry key={key} data={kanji} isSide />
               ))}
             </ResultContainer>
           </div>

@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  path {
+    @apply stroke-secondary;
+  }
+
+  .dark path {
+    @apply stroke-light;
+  }
+}
+
+@layer utilities {
+  .hidden-text text {
+    opacity: 0;
+  }
+}
