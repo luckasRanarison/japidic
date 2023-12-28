@@ -1,0 +1,19 @@
+{
+  "name": "Japidic",
+  "short_name": "Jpdic",
+  "theme_color": "#DC515C",
+  "background_color": "#E7E8ED",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}
