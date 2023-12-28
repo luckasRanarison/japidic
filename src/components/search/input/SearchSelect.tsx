@@ -1,12 +1,12 @@
 "use client";
 
-import { SearchType, optionMap } from "@/utils/search";
+import { SearchTypeAlias, searchTypeMap } from "@/utils/search";
 import { useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 type SelectProps = {
-  value: SearchType;
-  onSelect: (value: SearchType) => void;
+  value: SearchTypeAlias;
+  onSelect: (value: SearchTypeAlias) => void;
 };
 
 const SearchSelect = ({ value, onSelect }: SelectProps) => {
@@ -22,8 +22,8 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
       className="relative pl-6 flex items-center space-x-4
       group hover:cursor-pointer"
     >
-      <span>{optionMap[value].symbol}</span>
-      <span className="hidden md:block">{optionMap[value].name}</span>
+      <span>{searchTypeMap[value].symbol}</span>
+      <span className="hidden md:block">{searchTypeMap[value].name}</span>
       <button>
         <RiArrowDownSLine
           className={`stroke-1 duration-200 ${isListVisible && "rotate-180"}`}
@@ -36,14 +36,14 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
         overflow-clip rounded-md shadow-sm shadow-shadow
         bg-white dark:bg-darkoverlay duration-300`}
       >
-        {Object.entries(optionMap).map(
+        {Object.entries(searchTypeMap).map(
           ([key, { symbol, name }]) =>
             key !== value && (
               <button
                 key={key}
                 className="w-full py-3 px-5 flex font-sembibold
                 hover:text-light hover:bg-secondary"
-                onClick={() => onSelect(key as SearchType)}
+                onClick={() => onSelect(key as SearchTypeAlias)}
               >
                 <span className="mr-4">{symbol}</span>
                 <span>{name}</span>

@@ -1,10 +1,14 @@
-export type SearchType = "word" | "kanji" | "phrase" | "name";
+export type SearchTypeAlias = "word" | "kanji" | "phrase" | "name";
 
-const optionMap = {
-  word: { symbol: "単", name: "Word" },
-  kanji: { symbol: "字", name: "Kanji" },
-  phrase: { symbol: "文", name: "Phrase" },
-  name: { symbol: "名", name: "Name" },
+const searchTypeMap = {
+  word: { id: 0, symbol: "単", name: "Word" },
+  kanji: { id: 1, symbol: "字", name: "Kanji" },
+  phrase: { id: 2, symbol: "文", name: "Phrase" },
+  name: { id: 3, symbol: "名", name: "Name" },
 };
 
-export { optionMap };
+function getTypeFromAlias(alias: SearchTypeAlias) {
+  return searchTypeMap[alias].id.toString() as SearchType;
+}
+
+export { searchTypeMap, getTypeFromAlias };

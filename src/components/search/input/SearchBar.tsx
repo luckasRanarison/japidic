@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import { useRouter, useSearchParams } from "next/navigation";
 import SearchSelect from "./SearchSelect";
-import { SearchType } from "@/utils/search";
+import { SearchTypeAlias } from "@/utils/search";
 import { toRomaji, toHiragana } from "wanakana";
 import Tooltip from "@/components/common/Tooltip";
+import SearchSuggestion from "./SearchSuggestion";
 
 type WrittingMode = "romaji" | "hiragana";
 
@@ -15,14 +16,22 @@ const SearchBar = () => {
   const searchParams = useSearchParams();
   const [mode, setMode] = useState<WrittingMode>();
   const [input, setInput] = useState(searchParams.get("query") ?? "");
-  const [type, setOption] = useState(
-    (searchParams.get("type") as SearchType) ?? "word"
+  const [hasTyped, setHasTyped] = useState(false);
+  const [type, setType] = useState(
+    (searchParams.get("type") as SearchTypeAlias) ?? "word"
   );
 
-  const handleSearch = () => {
+  const handleSearch = (input: string) => {
     if (input) {
+      setInput(input);
+      setHasTyped(false);
       push(`/search?type=${type}&query=${input}`);
     }
+  };
+
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setInput(event.target.value);
+    setHasTyped(true);
   };
 
   useEffect(() => {
@@ -39,13 +48,13 @@ const SearchBar = () => {
       flex rounded-md shadow-sm duration-300
       bg-white text-secondary dark:text-light dark:bg-darkoverlay"
     >
-      <SearchSelect value={type} onSelect={(value) => setOption(value)} />
-      <div className="w-full py-3 flex">
+      <SearchSelect value={type} onSelect={(value) => setType(value)} />
+      <div className="relative w-full py-3 flex">
         <input
           type="search"
           value={input}
-          onChange={(event) => setInput(() => event.target.value)}
-          onKeyUp={(event) => event.key == "Enter" && handleSearch()}
+          onChange={handleInput}
+          onKeyUp={(event) => event.key == "Enter" && handleSearch(input)}
           placeholder="Type to search..."
           className="px-4 w-full bg-transparent focus:outline-none"
         />
@@ -58,11 +67,18 @@ const SearchBar = () => {
         >
           {mode == "hiragana" ? "Aa" : "あ"}
         </Tooltip>
+        {hasTyped && (
+          <SearchSuggestion
+            input={input}
+            type={type}
+            onSelect={(item) => handleSearch(item)}
+          />
+        )}
       </div>
       <button
         className="px-4 rounded-r-md
         text-white bg-secondary hover:bg-primary"
-        onClick={handleSearch}
+        onClick={() => handleSearch(input)}
       >
         <RiSearchLine className="stroke-1" />
       </button>

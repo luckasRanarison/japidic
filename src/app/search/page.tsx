@@ -3,11 +3,11 @@ import KanjiList from "@/components/search/kanji/KanjiList";
 import NameList from "@/components/search/name/NameList";
 import SentenceList from "@/components/search/sentence/SentenceList";
 import WordList from "@/components/search/word/WordList";
-import { SearchType } from "@/utils/search";
+import { SearchTypeAlias } from "@/utils/search";
 
 type PageProps = {
   searchParams: {
-    type: SearchType;
+    type: SearchTypeAlias;
     query: string;
   };
 };

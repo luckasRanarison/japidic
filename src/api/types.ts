@@ -14,6 +14,13 @@ type SearchQuery = {
   noEnglish?: boolean;
 };
 
+enum SearchType {
+  Word = "0",
+  Kanji = "1",
+  Sentence = "2",
+  Name = "3",
+}
+
 type CompletionQuery = {
   input: string;
   lang:
@@ -26,7 +33,7 @@ type CompletionQuery = {
     | "ru"
     | "hu"
     | "sl-SI";
-  searchType: "Words" | "Kanji" | "Sentences" | "Names";
+  searchType: SearchType;
   radicals?: string[];
 };
 
