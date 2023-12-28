@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  icons: [{ rel: "icon", url: "/icons/icon-512x512.png" }],
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
