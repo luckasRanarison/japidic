@@ -46,14 +46,14 @@ const KanjiStroke = ({ svg }: { svg: string }) => {
         <div className="flex flex-col justify-center space-y-4">
           <Tooltip
             text="Play animation"
-            className="cursor-pointer"
+            className="cursor-pointer hover:text-primary"
             onClick={animate}
           >
             <RiPlayCircleLine size={22} />
           </Tooltip>
           <Tooltip
             text="Hide numbers"
-            className="cursor-pointer"
+            className="cursor-pointer hover:text-primary"
             onClick={() => setIsTextHidden((prev) => !prev)}
           >
             <RiEyeLine size={22} />
