@@ -3,7 +3,7 @@
 import Tooltip from "@/components/common/Tooltip";
 import anime from "animejs";
 import { useMemo, useRef, useState } from "react";
-import { RiEyeLine, RiPlayCircleLine, RiPlayFill } from "react-icons/ri";
+import { RiEyeLine, RiPlayCircleLine } from "react-icons/ri";
 
 const KanjiStroke = ({ svg }: { svg: string }) => {
   const svgRef = useRef<SVGSVGElement>(null);

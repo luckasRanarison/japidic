@@ -33,3 +33,4 @@ npm run dev
 - [The Jotoba project](https://github.com/WeDontPanic/Jotoba) for the APIs.
 - [EDRDG](http://www.edrdg.org/) which provides most of the data.
 - [Kanji Alive](https://kanjialive.com/) for audio sources.
+- [KanjiVG](https://github.com/KanjiVG/kanjivg) for the kanji stroke data.

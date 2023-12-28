@@ -32,7 +32,7 @@ const SearchSuggestion = ({ input, type, onSelect }: SuggestionProps) => {
     }, 200);
 
     return () => clearTimeout(timeout);
-  }, [input]);
+  }, [input, searchType]);
 
   return (
     <div
