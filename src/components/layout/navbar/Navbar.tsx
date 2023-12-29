@@ -29,7 +29,10 @@ const Navbar = () => {
       </div>
       <div className="flex items-center space-x-6">
         <ThemeButton />
-        <a href="https://github.com/luckasRanarison/japidic">
+        <a
+          href="https://github.com/luckasRanarison/japidic"
+          aria-label="Github repository"
+        >
           <RiGithubFill size={24} className="hover:text-primary duration-300" />
         </a>
       </div>

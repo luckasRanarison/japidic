@@ -18,10 +18,10 @@ const Page = async ({ params }: PageProps) => {
   const dataResponse = searchWord({ query });
   const sentenceResponse = searchSentence({ query });
   const [data, sentences] = await Promise.all([dataResponse, sentenceResponse]);
+
   const wordFiltered = data.words.filter(
     (value) => (value.reading.kanji || value.reading.kana) === query
   );
-
   const kanjiFiltered = data.kanji.filter((value) =>
     kanji.includes(value.literal)
   );

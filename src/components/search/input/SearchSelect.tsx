@@ -24,7 +24,7 @@ const SearchSelect = ({ value, onSelect }: SelectProps) => {
     >
       <span>{searchTypeMap[value].symbol}</span>
       <span className="hidden md:block">{searchTypeMap[value].name}</span>
-      <button>
+      <button aria-label="Show search types">
         <RiArrowDownSLine
           className={`stroke-1 duration-200 ${isListVisible && "rotate-180"}`}
         />

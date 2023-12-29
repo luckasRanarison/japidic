@@ -9,7 +9,7 @@ const Footer = async () => {
   return (
     <footer
       className="w-full py-10 px-4 flex justify-center
-      text-secondary dark:text-light"
+      text-sm text-secondary dark:text-light"
     >
       <div className="max-w-xl flex flex-col items-center space-y-4">
         <div className="leading-8 text-center space-x-1">

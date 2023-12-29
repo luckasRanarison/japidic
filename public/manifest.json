@@ -2,8 +2,6 @@
   "name": "Japidic",
   "short_name": "Japidic",
   "description": "Free online japanese dictionary",
-  "theme_color": "#DC515C",
-  "background_color": "#E7E8ED",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",

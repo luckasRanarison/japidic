@@ -27,6 +27,7 @@ const ThemeButton = () => {
     <button
       onClick={toggleTheme}
       className="hover:rotate-180 hover:text-primary duration-500"
+      aria-label="Theme button"
     >
       {theme == "light" ? <RiSunFill size={24} /> : <RiMoonFill size={24} />}
     </button>

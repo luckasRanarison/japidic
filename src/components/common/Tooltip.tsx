@@ -1,9 +1,9 @@
 type TooltipProps = {
-  children?: React.ReactNode;
   text: string;
+  children?: React.ReactNode;
   showTooltip?: boolean;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Tooltip = (props: TooltipProps) => {
