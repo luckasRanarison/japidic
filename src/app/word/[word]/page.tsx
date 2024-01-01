@@ -34,13 +34,13 @@ const Page = async ({ params }: PageProps) => {
         md:flex-row md:items-start md:justify-around"
       >
         <div className="flex flex-col md:w-2/3 space-y-6">
-          <ResultContainer type="Meaning (意み味)">
+          <ResultContainer label="Meanings">
             {wordFiltered.map((word, key) => (
               <WordEntry key={key} data={word} detailed />
             ))}
           </ResultContainer>
           {sentences.length > 0 && (
-            <ResultContainer type="Example sentences (文)">
+            <ResultContainer label="Sentences">
               {sentences.map((sentence, key) => (
                 <SentenceEntry key={key} data={sentence} />
               ))}
@@ -49,7 +49,7 @@ const Page = async ({ params }: PageProps) => {
         </div>
         {kanjiFiltered.length > 0 && (
           <div className="flex flex-col md:w-1/3 space-y-6">
-            <ResultContainer type="Kanji in this word (漢字)" showCount={false}>
+            <ResultContainer label="Kanji">
               {kanjiFiltered.map((kanji, key) => (
                 <KanjiEntry key={key} data={kanji} isSide />
               ))}

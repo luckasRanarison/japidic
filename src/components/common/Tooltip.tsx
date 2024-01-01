@@ -15,7 +15,7 @@ const Tooltip = (props: TooltipProps) => {
       {props.children}
       <div
         className={`z-50 group-hover:block ${!props.showTooltip && "hidden"}
-        absolute -bottom-14 w-max py-2 px-4
+        absolute -bottom-14 w-max py-2 px-4 border-[1px] border-light
         rounded-md text-sm text-light bg-secondary shadow-md`}
       >
         {props.text}

@@ -6,7 +6,8 @@ type ContainerProps = {
 const EntryContainer = ({ children, className }: ContainerProps) => {
   return (
     <div
-      className={`${className} space-y-4 px-8 py-6 rounded-md shadow-sm
+      className={`${className} space-y-4 px-8 py-6 
+      rounded-md border-[1px] border-shadow dark:border-darkborder shadow-sm
       text-secondary dark:text-light bg-white dark:bg-darkoverlay`}
     >
       {children}

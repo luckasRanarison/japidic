@@ -71,56 +71,32 @@ const SearchBar = () => {
 
   return (
     <div
-      className="w-full max-w-full md:max-w-md
-      flex rounded-md shadow-sm duration-300
-      bg-white text-secondary dark:text-light dark:bg-darkoverlay"
+      className="relative py-3 w-full max-w-full md:max-w-md
+      flex items-center rounded-md shadow-sm duration-300
+      bg-white text-secondary dark:text-light dark:bg-darkoverlay
+      border-[1px] border-shadow dark:border-darkborder"
     >
-      <Listbox value={searchType} onChange={setSearchType}>
-        <div className="relative flex items-center justify-start">
-          <Listbox.Button className="flex items-center space-x-4 pl-6">
-            <span>{searchTypeMap[searchType].symbol}</span>
-            <span className="hidden md:block">
-              {searchTypeMap[searchType].name}
-            </span>
-            <RiExpandUpDownLine />
-          </Listbox.Button>
-          <Listbox.Options
-            className="w-full min-w-fit absolutez-10 absolute top-16
-            overflow-clip rounded-md shadow-sm shadow-shadow
-            bg-white dark:bg-darkoverlay"
-          >
-            {Object.entries(searchTypeMap).map(([key, { symbol, name }]) => (
-              <Listbox.Option
-                key={key}
-                value={key}
-                className="w-full flex space-x-2 py-2 px-5 hover:cursor-pointer
-                ui-active:bg-secondary ui-active:text-light"
-              >
-                <span className="mr-2">{symbol}</span>
-                <span>{name}</span>
-              </Listbox.Option>
-            ))}
-          </Listbox.Options>
-        </div>
-      </Listbox>
+      <RiSearchLine className="ml-4 text-secondary dark:text-white" />
       <Combobox onChange={handleSearch}>
-        <div className="relative w-full py-3 flex">
-          <Combobox.Input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            onKeyDown={(event) => event.key === "Enter" && handleSearch(query)}
-            placeholder="Type to search..."
-            className="px-4 w-full bg-transparent focus:outline-none"
-          />
+        <Combobox.Input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={(event) => event.key === "Enter" && handleSearch(query)}
+          placeholder="Type to search..."
+          className="px-4 w-full bg-transparent focus:outline-none"
+        />
+        {query && (
           <Combobox.Options
-            className="absolute z-10 top-16 w-full rounded-md overflow-clip
-            shadow-sm shadow-shadow bg-white dark:bg-darkoverlay"
+            className="absolute z-10 top-16 w-full overflow-clip p-2
+            rounded-md shadow-sm bg-white dark:bg-darkoverlay
+            border-[1px] border-shadow dark:border-darkborder"
           >
             {query.length > 0 && (
               <Combobox.Option
                 value={query}
-                className="group flex justify-between py-2 px-6
-                ui-active:bg-secondary ui-active:text-white cursor-pointer"
+                className="flex justify-between py-2 px-6 cursor-pointer rounded-md
+                ui-active:bg-highlight dark:ui-active:bg-darkhighlight
+                ui-active:text-secondary dark:ui-active:text-white"
               >
                 {query}
               </Combobox.Option>
@@ -131,39 +107,35 @@ const SearchBar = () => {
                 <Combobox.Option
                   key={key}
                   value={secondary ?? primary}
-                  className="group flex justify-between py-2 px-6
-                  ui-active:bg-secondary cursor-pointer"
+                  className="flex justify-between py-2 px-6 cursor-pointer rounded-md
+                  ui-active:bg-highlight dark:ui-active:bg-darkhighlight
+                  ui-active:text-secondary dark:ui-active:text-white"
                 >
-                  <div className="overflow-hidden whitespace-nowrap ui-active:text-white">
+                  <div
+                    className="overflow-hidden whitespace-nowrap
+                    ui-active:text-secondary dark:ui-active:text-white"
+                  >
                     {secondary ?? primary}
                   </div>
                   <div
                     className="text-secondary opacity-60
                     overflow-hidden whitespace-nowrap
-                    dark:opacity-100 ui-active:text-light"
+                    dark:opacity-100 ui-active:text-secondary"
                   >
                     {secondary && `(${primary})`}
                   </div>
                 </Combobox.Option>
               ))}
           </Combobox.Options>
-          <Tooltip
-            className="mr-4 cursor-pointer"
-            text="Toggle writing mode"
-            onClick={toggleWrittingMode}
-          >
-            {writtingMode == "hiragana" ? "Aa" : "あ"}
-          </Tooltip>
-        </div>
+        )}
+        <Tooltip
+          className="mr-4 cursor-pointer"
+          text="Toggle writing mode"
+          onClick={toggleWrittingMode}
+        >
+          {writtingMode == "hiragana" ? "Aa" : "あ"}
+        </Tooltip>
       </Combobox>
-      <button
-        className="px-4 rounded-r-md
-        text-white bg-secondary hover:bg-primary"
-        aria-label="Search"
-        onClick={() => handleSearch(query)}
-      >
-        <RiSearchLine className="stroke-1" />
-      </button>
     </div>
   );
 };

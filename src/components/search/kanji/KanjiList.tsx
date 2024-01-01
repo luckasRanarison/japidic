@@ -6,7 +6,7 @@ const KanjiList = async ({ query }: { query: string }) => {
   const kanji = await searchKanji({ query });
 
   return (
-    <ResultContainer type="Kanji (漢字)">
+    <ResultContainer label="Kanji">
       {kanji
         .sort((a, b) => {
           const delta = (a.frequency ?? Infinity) - (b.frequency ?? Infinity);
