@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { RiSearchLine, RiExpandUpDownLine } from "react-icons/ri";
+import { RiSearchLine, RiExpandUpDownLine, RiCloseLine } from "react-icons/ri";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   SearchTypeAlias,
@@ -76,7 +76,7 @@ const SearchBar = () => {
       bg-white text-secondary dark:text-light dark:bg-darkoverlay
       border-[1px] border-shadow dark:border-darkborder"
     >
-      <RiSearchLine className="ml-4 text-secondary dark:text-white" />
+      <RiSearchLine className="ml-4 flex-shrink-0 text-secondary dark:text-white" />
       <Combobox onChange={handleSearch}>
         <Combobox.Input
           value={query}
@@ -128,14 +128,44 @@ const SearchBar = () => {
               ))}
           </Combobox.Options>
         )}
-        <Tooltip
-          className="mr-4 cursor-pointer"
-          text="Toggle writing mode"
-          onClick={toggleWrittingMode}
-        >
-          {writtingMode == "hiragana" ? "Aa" : "あ"}
-        </Tooltip>
       </Combobox>
+      {query && (
+        <button className="mr-2 text-primary" onClick={() => setQuery("")}>
+          <RiCloseLine />
+        </button>
+      )}
+      <Listbox value={searchType} onChange={setSearchType}>
+        <div
+          className="relative flex items-center justify-end
+          border-l-[1px] border-shadow dark:border-darkborder"
+        >
+          <Listbox.Button className="flex items-center space-x-4 px-4">
+            <span>{searchTypeMap[searchType].name}</span>
+            <RiExpandUpDownLine />
+          </Listbox.Button>
+          <Listbox.Options
+            className="z-10 w-full min-w-fit absolutez-10 absolute top-16 p-2
+            overflow-clip rounded-md shadow-sm border-[1px] 
+            border-shadow dark:border-darkborder bg-white dark:bg-darkoverlay"
+          >
+            {Object.entries(searchTypeMap).map(
+              ([key, { name }]) =>
+                key !== searchType && (
+                  <Listbox.Option
+                    key={key}
+                    value={key}
+                    className="w-full flex space-x-2 py-2 px-5
+                    rounded-md hover:cursor-pointer
+                    ui-active:bg-highlight ui-active:text-secondary
+                    dark:ui-active:bg-darkhighlight dark:ui-active:text-white"
+                  >
+                    <span>{name}</span>
+                  </Listbox.Option>
+                )
+            )}
+          </Listbox.Options>
+        </div>
+      </Listbox>
     </div>
   );
 };
