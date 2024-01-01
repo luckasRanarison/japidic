@@ -60,10 +60,14 @@ const SearchBar = () => {
           // Dismisss errors
         }
       }
-    }, 200);
+    }, 300);
 
     return () => clearTimeout(timeout);
   }, [query, writtingMode, searchType]);
+
+  useEffect(() => {
+    handleSearch(query);
+  }, [searchType]);
 
   return (
     <div
