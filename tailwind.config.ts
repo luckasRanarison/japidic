@@ -23,17 +23,19 @@ const config: Config = {
     },
     colors: {
       white: "#FFFFFF",
-      light: "#E7E8ED",
+      light: "#F5F5F5",
       primary: "#DC515C",
       secondary: "#526071",
+      border: "#5260714D",
       transparent: "#FFFFFF00",
       dark: "#121212",
       darkoverlay: "#2C2C2C",
-      shadow: "#00000025",
+      darkborder: "#414141",
+      darkhighlight: "#414141",
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@headlessui/tailwindcss")],
 };
 
 export default config;

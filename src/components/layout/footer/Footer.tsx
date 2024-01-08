@@ -4,7 +4,8 @@ import GithubStat from "./GithubStat";
 import { getRepoStats } from "@/api/github";
 
 const Footer = async () => {
-  const { stargazers, watchers, forks } = await getRepoStats();
+  // const { stargazers, watchers, forks } = await getRepoStats();
+  const [stargazers, watchers, forks] = [0, 0, 0];
 
   return (
     <footer

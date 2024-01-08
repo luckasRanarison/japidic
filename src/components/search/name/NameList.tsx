@@ -6,7 +6,7 @@ const NameList = async ({ query }: { query: string }) => {
   const names = await searchName({ query });
 
   return (
-    <ResultContainer type="Name (名)">
+    <ResultContainer label="Names">
       {names.map((name, key) => (
         <NameEntry key={key} data={name} />
       ))}

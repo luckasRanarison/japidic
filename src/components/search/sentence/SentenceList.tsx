@@ -6,7 +6,7 @@ const SentenceList = async ({ query }: { query: string }) => {
   const sentences = await searchSentence({ query });
 
   return (
-    <ResultContainer type="Sentence (文)">
+    <ResultContainer label="Sentences">
       {sentences.map((sentence, key) => (
         <SentenceEntry key={key} data={sentence} />
       ))}
