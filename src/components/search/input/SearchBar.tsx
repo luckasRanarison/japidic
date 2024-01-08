@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { RiSearchLine, RiExpandUpDownLine, RiCloseLine } from "react-icons/ri";
+import {
+  RiSearchLine,
+  RiExpandUpDownLine,
+  RiCloseLine,
+  RiMoreFill,
+} from "react-icons/ri";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   SearchTypeAlias,
@@ -10,7 +15,7 @@ import {
 } from "@/utils/search";
 import { toRomaji, toHiragana } from "wanakana";
 import { getCompletion } from "@/api/jotoba";
-import { Combobox, Listbox } from "@headlessui/react";
+import { Combobox, Listbox, Menu } from "@headlessui/react";
 
 type WrittingMode = "romaji" | "hiragana";
 
@@ -133,6 +138,39 @@ const SearchBar = () => {
           <RiCloseLine />
         </button>
       )}
+      <Menu>
+        <div className="relative flex justify-end">
+          <Menu.Button className="mr-2">
+            <RiMoreFill size={24} />
+          </Menu.Button>
+          <Menu.Items
+            className="flex z-10 p-2 top-14 absolute shadow-sm rounded-md
+            border-[1px] border-border dark:border-darkborder bg-white dark:bg-darkoverlay"
+          >
+            <Menu.Item>
+              <button
+                className="p-2 rounded-md
+                ui-active:bg-secondary ui-active:text-light dark:ui-active:bg-darkhighlight"
+                onClick={toggleWrittingMode}
+              >
+                <div>{writtingMode === "hiragana" ? "Aa" : "あ"}</div>
+                <div className="text-sm">
+                  {writtingMode === "hiragana" ? "Romaji" : "Hiragana"}
+                </div>
+              </button>
+            </Menu.Item>
+            <Menu.Item>
+              <button
+                className="p-2 rounded-md
+                ui-active:bg-secondary ui-active:text-light dark:ui-active:bg-darkhighlight"
+              >
+                <div>部</div>
+                <div className="text-sm">Radicals</div>
+              </button>
+            </Menu.Item>
+          </Menu.Items>
+        </div>
+      </Menu>
       <Listbox value={searchType} onChange={setSearchType}>
         <div
           className="relative flex items-center justify-end
@@ -143,7 +181,7 @@ const SearchBar = () => {
             <RiExpandUpDownLine />
           </Listbox.Button>
           <Listbox.Options
-            className="z-10 w-full min-w-fit absolutez-10 absolute top-16 p-2
+            className="z-10 w-full min-w-fit absolutez-10 absolute top-14 p-2
             overflow-clip rounded-md shadow-sm border-[1px] 
             border-border dark:border-darkborder bg-white dark:bg-darkoverlay"
           >

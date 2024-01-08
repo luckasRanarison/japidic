@@ -23,10 +23,10 @@ const config: Config = {
     },
     colors: {
       white: "#FFFFFF",
-      light: "#f5f5f5",
+      light: "#F5F5F5",
       primary: "#DC515C",
       secondary: "#526071",
-      border: "#5260714d",
+      border: "#5260714D",
       transparent: "#FFFFFF00",
       dark: "#121212",
       darkoverlay: "#2C2C2C",
