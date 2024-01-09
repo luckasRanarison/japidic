@@ -15,7 +15,8 @@ import {
 } from "@/utils/search";
 import { toRomaji, toHiragana } from "wanakana";
 import { getCompletion } from "@/api/jotoba";
-import { Combobox, Listbox, Menu } from "@headlessui/react";
+import { Combobox, Dialog, Listbox, Menu } from "@headlessui/react";
+import Radicals from "./Radicals";
 
 type WrittingMode = "romaji" | "hiragana";
 
@@ -28,6 +29,7 @@ const SearchBar = () => {
   const [searchType, setSearchType] = useState(
     (searchParams.get("type") as SearchTypeAlias) ?? "word"
   );
+  const [isRadicalVisible, setIsRadicalVisible] = useState(false);
 
   const handleSearch = (input: string) => {
     if (input) {
@@ -40,6 +42,11 @@ const SearchBar = () => {
 
   const toggleWrittingMode = () => {
     setWrittingMode((prev) => (prev == "hiragana" ? "romaji" : "hiragana"));
+  };
+
+  const handleKanjiSelect = (kanji: string) => {
+    setQuery((prev) => prev + kanji);
+    setIsRadicalVisible(false);
   };
 
   useEffect(() => {
@@ -122,9 +129,8 @@ const SearchBar = () => {
                     {secondary ?? primary}
                   </div>
                   <div
-                    className="text-secondary opacity-60
-                    overflow-hidden whitespace-nowrap
-                    dark:opacity-100 ui-active:text-light"
+                    className="opacity-60 overflow-hidden whitespace-nowrap
+                    ui-active:text-light"
                   >
                     {secondary && `(${primary})`}
                   </div>
@@ -163,6 +169,7 @@ const SearchBar = () => {
               <button
                 className="p-2 rounded-md
                 ui-active:bg-secondary ui-active:text-light dark:ui-active:bg-darkhighlight"
+                onClick={() => setIsRadicalVisible(true)}
               >
                 <div>部</div>
                 <div className="text-sm">Radicals</div>
@@ -203,6 +210,20 @@ const SearchBar = () => {
           </Listbox.Options>
         </div>
       </Listbox>
+      <Dialog
+        open={isRadicalVisible}
+        onClose={() => setIsRadicalVisible(false)}
+      >
+        <div
+          className="z-50 fixed inset-0 w-screen
+          flex items-center justify-center p-4 
+          backdrop-blur-sm bg-[#00000090]"
+        >
+          <Dialog.Panel className="h-[75%] w-full max-w-xl">
+            <Radicals onSelect={handleKanjiSelect} />
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </div>
   );
 };

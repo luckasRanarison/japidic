@@ -107,7 +107,7 @@ type KanjiResponse = {
 
 type KanjiByRadicalResponse = {
   kanji: { [key: string]: string[] };
-  possible_radicals: { [key: string]: string[] };
+  possibleRadicals: { [key: string]: string[] };
 };
 
 type NameType =

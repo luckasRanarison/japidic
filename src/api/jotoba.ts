@@ -22,7 +22,7 @@ async function searchKanji(query: SearchQuery) {
 
 async function searchKanjiByRadicals(radicals: string[]) {
   const res = await api.post<KanjiByRadicalResponse>(
-    "search/kanji/by_radical",
+    "kanji/by_radical",
     { radicals }
   );
   return res.data;
