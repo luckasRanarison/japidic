@@ -189,7 +189,7 @@ const SearchBar = () => {
           </Listbox.Button>
           <Listbox.Options
             className="z-10 w-full min-w-fit absolutez-10 absolute top-14 p-2
-            overflow-clip rounded-md shadow-sm border-[1px] 
+            overflow-clip rounded-md shadow-sm border-[1px]
             border-border dark:border-darkborder bg-white dark:bg-darkoverlay"
           >
             {Object.entries(searchTypeMap).map(
@@ -216,7 +216,7 @@ const SearchBar = () => {
       >
         <div
           className="z-50 fixed inset-0 w-screen
-          flex items-center justify-center p-4 
+          flex items-center justify-center p-4
           backdrop-blur-sm bg-[#00000090]"
         >
           <Dialog.Panel className="h-[75%] w-full max-w-xl">
